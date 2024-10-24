@@ -1,6 +1,7 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28315.86
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C5A00AC3-B34C-4564-9BDD-2DA473EF4D8B}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,62 +27,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84224365-32B6-46AF-85A2-45640E6D7EEB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2913483A-3E55-44AE-86BB-88511F372191}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		build\behaviors.public.snk = build\behaviors.public.snk
-		build.ps1 = build.ps1
-		build.sh = build.sh
-		global.json = global.json
-		azure-pipelines.yml = azure-pipelines.yml
-		Directory.Build.props = Directory.Build.props
-		Directory.Packages.props = Directory.Packages.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{40A43022-EBA7-4E1D-8BB0-2691E41B5622}"
-	ProjectSection(SolutionItems) = preProject
-		build\SignAssembly.props = build\SignAssembly.props
-		build\SourceLink.props = build\SourceLink.props
-		build\XUnit.props = build\XUnit.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{721A55B7-C5B0-44E2-803A-56E291C672FE}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet.Config = NuGet.Config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{8A0733E3-A184-4BD4-8CB7-478977F3F5FB}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.TXT = LICENSE.TXT
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{0B395300-CACE-470D-81A9-69B922FB79DE}"
-	ProjectSection(SolutionItems) = preProject
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DragAndDropSample", "samples\DragAndDropSample\DragAndDropSample.csproj", "{438F2B54-FEDB-48C4-B14A-E47541DA443F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\build\_build.csproj", "{005E7A00-4EA8-43F6-868E-1F8965D39CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DraggableDemo", "samples\DraggableDemo\DraggableDemo.csproj", "{D5855901-BEEF-4179-96E8-9DD276C4DAEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragAndDropSample", "samples\DragAndDropSample\DragAndDropSample.csproj", "{438F2B54-FEDB-48C4-B14A-E47541DA443F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.Responsive", "src\Avalonia.Xaml.Interactions.Responsive\Avalonia.Xaml.Interactions.Responsive.csproj", "{BEC165AA-392E-4193-A762-576A1EB8D40E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraggableDemo", "samples\DraggableDemo\DraggableDemo.csproj", "{D5855901-BEEF-4179-96E8-9DD276C4DAEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.Draggable", "src\Avalonia.Xaml.Interactions.Draggable\Avalonia.Xaml.Interactions.Draggable.csproj", "{681EB965-E5B2-4A6F-9938-578FD19E8A15}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{9D4D9F1A-6EE5-4B7D-8991-0601F80F39CD}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.DragAndDrop", "src\Avalonia.Xaml.Interactions.DragAndDrop\Avalonia.Xaml.Interactions.DragAndDrop.csproj", "{EF243B1A-FF29-41E9-B44B-2E55A73F6CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Xaml.Interactions.Responsive", "src\Avalonia.Xaml.Interactions.Responsive\Avalonia.Xaml.Interactions.Responsive.csproj", "{BEC165AA-392E-4193-A762-576A1EB8D40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.Custom", "src\Avalonia.Xaml.Interactions.Custom\Avalonia.Xaml.Interactions.Custom.csproj", "{D647E09E-BBF2-4432-A4E0-80FBB921C1EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Xaml.Interactions.Draggable", "src\Avalonia.Xaml.Interactions.Draggable\Avalonia.Xaml.Interactions.Draggable.csproj", "{681EB965-E5B2-4A6F-9938-578FD19E8A15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.Xaml.Interactions.Events", "src\Avalonia.Xaml.Interactions.Events\Avalonia.Xaml.Interactions.Events.csproj", "{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Xaml.Interactions.DragAndDrop", "src\Avalonia.Xaml.Interactions.DragAndDrop\Avalonia.Xaml.Interactions.DragAndDrop.csproj", "{EF243B1A-FF29-41E9-B44B-2E55A73F6CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{08E3C001-C0EF-449C-827E-275EA2B73768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Xaml.Interactions.Custom", "src\Avalonia.Xaml.Interactions.Custom\Avalonia.Xaml.Interactions.Custom.csproj", "{D647E09E-BBF2-4432-A4E0-80FBB921C1EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Xaml.Interactions.Events", "src\Avalonia.Xaml.Interactions.Events\Avalonia.Xaml.Interactions.Events.csproj", "{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D08B356C-E82A-4BD6-8ED2-F999267EACBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,10 +81,6 @@ Global
 		{80D2C64D-B560-475D-941F-D5F28DDB2591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D2C64D-B560-475D-941F-D5F28DDB2591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D2C64D-B560-475D-941F-D5F28DDB2591}.Release|Any CPU.Build.0 = Release|Any CPU
-		{005E7A00-4EA8-43F6-868E-1F8965D39CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{005E7A00-4EA8-43F6-868E-1F8965D39CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{005E7A00-4EA8-43F6-868E-1F8965D39CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{005E7A00-4EA8-43F6-868E-1F8965D39CAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{438F2B54-FEDB-48C4-B14A-E47541DA443F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{438F2B54-FEDB-48C4-B14A-E47541DA443F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{438F2B54-FEDB-48C4-B14A-E47541DA443F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -145,6 +109,8 @@ Global
 		{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E3C001-C0EF-449C-827E-275EA2B73768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E3C001-C0EF-449C-827E-275EA2B73768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,18 +122,14 @@ Global
 		{ED03EEAD-938F-447B-BF0B-30857AE78BFF} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
 		{C2229490-39CA-4192-A28C-1B5EC186E027} = {C5A00AC3-B34C-4564-9BDD-2DA473EF4D8B}
 		{80D2C64D-B560-475D-941F-D5F28DDB2591} = {C5A00AC3-B34C-4564-9BDD-2DA473EF4D8B}
-		{40A43022-EBA7-4E1D-8BB0-2691E41B5622} = {2913483A-3E55-44AE-86BB-88511F372191}
-		{721A55B7-C5B0-44E2-803A-56E291C672FE} = {2913483A-3E55-44AE-86BB-88511F372191}
-		{0B395300-CACE-470D-81A9-69B922FB79DE} = {2913483A-3E55-44AE-86BB-88511F372191}
-		{005E7A00-4EA8-43F6-868E-1F8965D39CAA} = {2913483A-3E55-44AE-86BB-88511F372191}
 		{438F2B54-FEDB-48C4-B14A-E47541DA443F} = {9B9E3891-2366-4253-A952-D08BCEB71098}
 		{D5855901-BEEF-4179-96E8-9DD276C4DAEE} = {9B9E3891-2366-4253-A952-D08BCEB71098}
-		{9D4D9F1A-6EE5-4B7D-8991-0601F80F39CD} = {2913483A-3E55-44AE-86BB-88511F372191}
 		{BEC165AA-392E-4193-A762-576A1EB8D40E} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
 		{681EB965-E5B2-4A6F-9938-578FD19E8A15} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
 		{EF243B1A-FF29-41E9-B44B-2E55A73F6CCE} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
 		{D647E09E-BBF2-4432-A4E0-80FBB921C1EE} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
 		{648FFF6A-A8F5-491C-AC1C-19FC2061D6B4} = {84224365-32B6-46AF-85A2-45640E6D7EEB}
+		{08E3C001-C0EF-449C-827E-275EA2B73768} = {D08B356C-E82A-4BD6-8ED2-F999267EACBF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E64CD420-15B1-487C-9806-41EBE6DC15A4}
