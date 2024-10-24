@@ -2,14 +2,18 @@
 using System.Diagnostics;
 using System.Globalization;
 using Avalonia.Controls;
+using Avalonia.Reactive;
+using System.Reactive.Disposables;
 
 namespace Avalonia.Xaml.Interactivity;
 
 /// <summary>
 /// A base class for behaviors, implementing the basic plumbing of <see cref="IBehavior"/>.
 /// </summary>
-public abstract class Behavior : AvaloniaObject, IBehavior
+public abstract class Behavior : StyledElement, IBehavior
 {
+    private IDisposable? _dataContextSyncer;
+
     /// <summary>
     /// Identifies the <seealso cref="IsEnabled"/> avalonia property.
     /// </summary>
@@ -53,6 +57,8 @@ public abstract class Behavior : AvaloniaObject, IBehavior
         Debug.Assert(associatedObject is not null, "Cannot attach the behavior to a null object.");
         AssociatedObject = associatedObject ?? throw new ArgumentNullException(nameof(associatedObject));
 
+        _dataContextSyncer = SyncDataContextFrom(associatedObject);
+
         OnAttached();
     }
 
@@ -63,6 +69,7 @@ public abstract class Behavior : AvaloniaObject, IBehavior
     {
         OnDetaching();
         AssociatedObject = null;
+        _dataContextSyncer?.Dispose();
     }
 
     /// <summary>
@@ -155,5 +162,17 @@ public abstract class Behavior : AvaloniaObject, IBehavior
     /// </remarks>
     protected virtual void OnUnloaded()
     {
+    }
+
+    private IDisposable SyncDataContextFrom(AvaloniaObject associatedObject)
+    {
+        if (associatedObject is StyledElement styledElement)
+        {
+            return styledElement
+                .GetObservable(DataContextProperty)
+                .Subscribe(new AnonymousObserver<object?>(o => DataContext = o));
+        }
+
+        return Disposable.Empty;
     }
 }
