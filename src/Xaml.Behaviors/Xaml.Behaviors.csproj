@@ -24,11 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Xaml.Interactivity\Xaml.Interactivity.csproj" />
     <ProjectReference Include="..\Xaml.Interactions\Xaml.Interactions.csproj" />
-    <ProjectReference Include="..\Avalonia.Xaml.Interactions.Custom\Avalonia.Xaml.Interactions.Custom.csproj" />
-    <ProjectReference Include="..\Avalonia.Xaml.Interactions.DragAndDrop\Avalonia.Xaml.Interactions.DragAndDrop.csproj" />
-    <ProjectReference Include="..\Avalonia.Xaml.Interactions.Draggable\Avalonia.Xaml.Interactions.Draggable.csproj" />
-    <ProjectReference Include="..\Avalonia.Xaml.Interactions.Events\Avalonia.Xaml.Interactions.Events.csproj" />
-    <ProjectReference Include="..\Avalonia.Xaml.Interactions.Responsive\Avalonia.Xaml.Interactions.Responsive.csproj" />
   </ItemGroup>
 
 </Project>
