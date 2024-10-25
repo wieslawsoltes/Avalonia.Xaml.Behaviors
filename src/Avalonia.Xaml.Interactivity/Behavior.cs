@@ -8,7 +8,7 @@ namespace Avalonia.Xaml.Interactivity;
 /// <summary>
 /// A base class for behaviors, implementing the basic plumbing of <see cref="IBehavior"/>.
 /// </summary>
-public abstract class Behavior : AvaloniaObject, IBehavior, IInternalBehavior
+public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandler
 {
     /// <summary>
     /// Identifies the <seealso cref="IsEnabled"/> avalonia property.
@@ -85,17 +85,17 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IInternalBehavior
     {
     }
 
-    void IInternalBehavior.AttachedToVisualTreeImpl() => OnAttachedToVisualTree();
+    void IBehaviorEventsHandler.AttachedToVisualTreeEventHandler() => OnAttachedToVisualTree();
 
-    void IInternalBehavior.DetachedFromVisualTreeImpl() => OnDetachedFromVisualTree();
+    void IBehaviorEventsHandler.DetachedFromVisualTreeEventHandler() => OnDetachedFromVisualTree();
 
-    void IInternalBehavior.AttachedToLogicalTreeImpl() => OnAttachedToLogicalTree();
+    void IBehaviorEventsHandler.AttachedToLogicalTreeEventHandler() => OnAttachedToLogicalTree();
 
-    void IInternalBehavior.DetachedFromLogicalTreeImpl() => OnDetachedFromLogicalTree();
+    void IBehaviorEventsHandler.DetachedFromLogicalTreeEventHandler() => OnDetachedFromLogicalTree();
 
-    void IInternalBehavior.LoadedImpl() => OnLoaded();
+    void IBehaviorEventsHandler.LoadedEventHandler() => OnLoaded();
 
-    void IInternalBehavior.UnloadedImpl() => OnUnloaded();
+    void IBehaviorEventsHandler.UnloadedEventHandler() => OnUnloaded();
 
     /// <summary>
     /// Called after the <see cref="AssociatedObject"/> is attached to the visual tree.

@@ -81,9 +81,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior)
+            if (item is IBehaviorEventsHandler behaviorEventsHandler)
             {
-                behavior.AttachedToVisualTreeImpl();
+                behaviorEventsHandler.AttachedToVisualTreeEventHandler();
             }
         }
     }
@@ -92,9 +92,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
             {
-                behavior.DetachedFromVisualTreeImpl();
+                behaviorEventsHandler.DetachedFromVisualTreeEventHandler();
             }
         }
     }
@@ -103,9 +103,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior)
+            if (item is IBehaviorEventsHandler behaviorEventsHandler)
             {
-                behavior.AttachedToLogicalTreeImpl();
+                behaviorEventsHandler.AttachedToLogicalTreeEventHandler();
             }
         }
     }
@@ -114,9 +114,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
             {
-                behavior.DetachedFromLogicalTreeImpl();
+                behaviorEventsHandler.DetachedFromLogicalTreeEventHandler();
             }
         }
     }
@@ -125,9 +125,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior)
+            if (item is IBehaviorEventsHandler behaviorEventsHandler)
             {
-                behavior.LoadedImpl();
+                behaviorEventsHandler.LoadedEventHandler();
             }
         }
     }
@@ -136,9 +136,9 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IInternalBehavior behavior and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
             {
-                behavior.UnloadedImpl();
+                behaviorEventsHandler.UnloadedEventHandler();
             }
         }
     }

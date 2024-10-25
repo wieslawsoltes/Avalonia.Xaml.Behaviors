@@ -9,7 +9,7 @@ namespace Avalonia.Xaml.Interactivity;
 /// <summary>
 /// A base class for behaviors, implementing the basic plumbing of <see cref="IBehavior"/>.
 /// </summary>
-public abstract class StyledElementBehavior : StyledElement, IBehavior, IInternalBehavior
+public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehaviorEventsHandler
 {
     private IDisposable? _dataContextDisposable;
 
@@ -95,25 +95,25 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IInterna
     {
     }
 
-    void IInternalBehavior.AttachedToVisualTreeImpl() => OnAttachedToVisualTree();
+    void IBehaviorEventsHandler.AttachedToVisualTreeEventHandler() => OnAttachedToVisualTree();
 
-    void IInternalBehavior.DetachedFromVisualTreeImpl() => OnDetachedFromVisualTree();
+    void IBehaviorEventsHandler.DetachedFromVisualTreeEventHandler() => OnDetachedFromVisualTree();
 
-    void IInternalBehavior.AttachedToLogicalTreeImpl()
+    void IBehaviorEventsHandler.AttachedToLogicalTreeEventHandler()
     {
         AttachToLogicalTree();
         OnAttachedToLogicalTree();
     }
 
-    void IInternalBehavior.DetachedFromLogicalTreeImpl()
+    void IBehaviorEventsHandler.DetachedFromLogicalTreeEventHandler()
     {
         DetachFromLogicalTree();
         OnDetachedFromLogicalTree();
     }
 
-    void IInternalBehavior.LoadedImpl() => OnLoaded();
+    void IBehaviorEventsHandler.LoadedEventHandler() => OnLoaded();
 
-    void IInternalBehavior.UnloadedImpl() => OnUnloaded();
+    void IBehaviorEventsHandler.UnloadedEventHandler() => OnUnloaded();
 
     /// <summary>
     /// Called after the <see cref="AssociatedObject"/> is attached to the visual tree.
