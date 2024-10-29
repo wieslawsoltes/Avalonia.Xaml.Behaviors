@@ -55,8 +55,10 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
 
         foreach (var item in this)
         {
-            var behavior = (IBehavior)item;
-            behavior.Attach(AssociatedObject);
+            if (item is IBehavior behavior)
+            {
+                behavior.Attach(AssociatedObject);
+            }
         }
     }
 
@@ -67,7 +69,7 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IBehavior { AssociatedObject: not null} behaviorItem)
+            if (item is IBehavior { AssociatedObject: not null } behaviorItem)
             {
                 behaviorItem.Detach();
             }
@@ -92,7 +94,7 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
             {
                 behaviorEventsHandler.DetachedFromVisualTreeEventHandler();
             }
@@ -114,7 +116,7 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
             {
                 behaviorEventsHandler.DetachedFromLogicalTreeEventHandler();
             }
@@ -136,7 +138,7 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
     {
         foreach (var item in this)
         {
-            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null})
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
             {
                 behaviorEventsHandler.UnloadedEventHandler();
             }
@@ -174,8 +176,8 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
                 var eventIndex = eventArgs.NewStartingIndex;
                 var changedItem = eventArgs.NewItems?[0] as AvaloniaObject;
                 _oldCollection.Insert(eventIndex, VerifiedAttach(changedItem));
-            }
                 break;
+            }
 
             case NotifyCollectionChangedAction.Replace:
             {
@@ -191,8 +193,8 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
                 }
 
                 _oldCollection[eventIndex] = VerifiedAttach(changedItem);
-            }
                 break;
+            }
 
             case NotifyCollectionChangedAction.Remove:
             {
@@ -205,14 +207,16 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
                 }
 
                 _oldCollection.RemoveAt(eventIndex);
-            }
                 break;
+            }
 
             case NotifyCollectionChangedAction.Move:
             case NotifyCollectionChangedAction.Reset:
             default:
+            {
                 Debug.Assert(false, "Unsupported collection operation attempted.");
                 break;
+            }
         }
 #if DEBUG
         VerifyOldCollectionIntegrity();
@@ -221,7 +225,7 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
 
     private IBehavior VerifiedAttach(AvaloniaObject? item)
     {
-        if (!(item is IBehavior behavior))
+        if (item is not IBehavior behavior)
         {
             throw new InvalidOperationException(
                 $"Only {nameof(IBehavior)} types are supported in a {nameof(BehaviorCollection)}.");
