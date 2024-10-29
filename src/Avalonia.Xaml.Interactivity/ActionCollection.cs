@@ -21,17 +21,23 @@ public class ActionCollection : AvaloniaList<AvaloniaObject>
     {
         var collectionChangedAction = eventArgs.Action;
 
-        if (collectionChangedAction == NotifyCollectionChangedAction.Reset)
+        switch (collectionChangedAction)
         {
-            foreach (var item in this)
+            case NotifyCollectionChangedAction.Reset:
             {
-                VerifyType(item);
+                foreach (var item in this)
+                {
+                    VerifyType(item);
+                }
+
+                break;
             }
-        }
-        else if (collectionChangedAction is NotifyCollectionChangedAction.Add or NotifyCollectionChangedAction.Replace)
-        {
-            var changedItem = eventArgs.NewItems?[0] as AvaloniaObject;
-            VerifyType(changedItem);
+            case NotifyCollectionChangedAction.Add or NotifyCollectionChangedAction.Replace:
+            {
+                var changedItem = eventArgs.NewItems?[0] as AvaloniaObject;
+                VerifyType(changedItem);
+                break;
+            }
         }
     }
 
@@ -41,6 +47,7 @@ public class ActionCollection : AvaloniaList<AvaloniaObject>
         {
             return;
         }
+
         if (item is not IAction)
         {
             throw new InvalidOperationException(
