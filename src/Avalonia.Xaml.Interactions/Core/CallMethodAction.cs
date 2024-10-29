@@ -7,7 +7,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Reactive;
-using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
 
@@ -55,13 +54,13 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
     static CallMethodAction()
     {
         MethodNameProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string>>(MethodNameChanged));
+            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string?>>(MethodNameChanged));
 
         TargetObjectProperty.Changed.Subscribe(
             new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(TargetObjectChanged));
     }
 
-    private static void MethodNameChanged(AvaloniaPropertyChangedEventArgs<string> e)
+    private static void MethodNameChanged(AvaloniaPropertyChangedEventArgs<string?> e)
     {
         if (e.Sender is not CallMethodAction callMethodAction)
         {
@@ -90,7 +89,7 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
     /// <summary>
     /// Executes the action.
     /// </summary>
-    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="IBehavior.AssociatedObject"/> or a target object.</param>
+    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
     /// <param name="parameter">The value of this parameter is determined by the caller.</param>
     /// <returns>True if the method is called; else false.</returns>
     public override object Execute(object? sender, object? parameter)
