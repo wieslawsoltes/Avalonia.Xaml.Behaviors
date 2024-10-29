@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Avalonia.Controls;
-using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
 
@@ -122,7 +121,7 @@ public class ChangePropertyAction : Avalonia.Xaml.Interactivity.Action
     /// <summary>
     /// Executes the action.
     /// </summary>
-    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="IBehavior.AssociatedObject"/> or a target object.</param>
+    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
     /// <param name="parameter">The value of this parameter is determined by the caller.</param>
     /// <returns>True if updating the property value succeeds; else false.</returns>
     public override object Execute(object? sender, object? parameter)
@@ -232,7 +231,7 @@ public class ChangePropertyAction : Avalonia.Xaml.Interactivity.Action
                 if (valueAsString is not null)
                 {
                     result = propertyTypeInfo.IsEnum ? Enum.Parse(propertyType, valueAsString, false) :
-                        TypeConverterHelper.Convert(valueAsString, propertyType);
+                        Interactivity.TypeConverterHelper.Convert(valueAsString, propertyType);
                 }
             }
 
@@ -285,7 +284,7 @@ public class ChangePropertyAction : Avalonia.Xaml.Interactivity.Action
                 if (valueAsString is not null)
                 {
                     result = propertyTypeInfo.IsEnum ? Enum.Parse(propertyType, valueAsString, false) :
-                        TypeConverterHelper.Convert(valueAsString, propertyType);
+                        Interactivity.TypeConverterHelper.Convert(valueAsString, propertyType);
                 }
             }
 
