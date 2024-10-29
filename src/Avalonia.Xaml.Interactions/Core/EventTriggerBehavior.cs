@@ -55,14 +55,14 @@ public class EventTriggerBehavior : StyledElementTrigger
     static EventTriggerBehavior()
     {
         EventNameProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string>>(EventNameChanged));
+            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string?>>(EventNameChanged));
 
         SourceObjectProperty.Changed.Subscribe(
             new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(SourceObjectChanged));
     }
 
     [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-    private static void EventNameChanged(AvaloniaPropertyChangedEventArgs<string> e)
+    private static void EventNameChanged(AvaloniaPropertyChangedEventArgs<string?> e)
     {
         if (e.Sender is not EventTriggerBehavior behavior)
         {
@@ -147,7 +147,7 @@ public class EventTriggerBehavior : StyledElementTrigger
     }
 
     [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-    private void RegisterEvent(string eventName)
+    private void RegisterEvent(string? eventName)
     {
         if (string.IsNullOrEmpty(eventName))
         {
@@ -202,7 +202,7 @@ public class EventTriggerBehavior : StyledElementTrigger
     }
 
     [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-    private void UnregisterEvent(string eventName)
+    private void UnregisterEvent(string? eventName)
     {
         if (string.IsNullOrEmpty(eventName))
         {
