@@ -41,7 +41,7 @@ public class Interaction
         {
             behaviorCollection = [];
             obj.SetValue(BehaviorsProperty, behaviorCollection);
-            SetVisualTreeEventHandlersInitial(obj);
+            SetVisualTreeEventHandlersFromGetter(obj);
         }
 
         return behaviorCollection;
@@ -104,7 +104,7 @@ public class Interaction
             return;
         }
 
-        if (oldCollection is { AssociatedObject: not null})
+        if (oldCollection is { AssociatedObject: not null })
         {
             oldCollection.Detach();
         }
@@ -112,11 +112,11 @@ public class Interaction
         if (newCollection is not null)
         {
             newCollection.Attach(e.Sender);
-            SetVisualTreeEventHandlersRuntime(e.Sender);
+            SetVisualTreeEventHandlersFromChangedEvent(e.Sender);
         }
     }
 
-    private static void SetVisualTreeEventHandlersInitial(AvaloniaObject obj)
+    private static void SetVisualTreeEventHandlersFromGetter(AvaloniaObject obj)
     {
         if (obj is not Control control)
         {
@@ -125,33 +125,33 @@ public class Interaction
 
         // AttachedToVisualTree / DetachedFromVisualTree
 
-        control.AttachedToVisualTree -= Control_AttachedToVisualTreeRuntime;
-        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeRuntime;
-        control.AttachedToVisualTree -= Control_AttachedToVisualTreeInitial;
-        control.AttachedToVisualTree += Control_AttachedToVisualTreeInitial;
-        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeInitial;
-        control.DetachedFromVisualTree += Control_DetachedFromVisualTreeInitial;
+        control.AttachedToVisualTree -= Control_AttachedToVisualTreeFromChangedEvent;
+        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeFromChangedEvent;
+        control.AttachedToVisualTree -= Control_AttachedToVisualTreeFromGetter;
+        control.AttachedToVisualTree += Control_AttachedToVisualTreeFromGetter;
+        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeFromGetter;
+        control.DetachedFromVisualTree += Control_DetachedFromVisualTreeFromGetter;
 
         // AttachedToLogicalTree / DetachedFromLogicalTree
 
-        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeRuntime;
-        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeRuntime;
-        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeInitial;
-        control.AttachedToLogicalTree += Control_AttachedToLogicalTreeInitial;
-        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeInitial;
-        control.DetachedFromLogicalTree += Control_DetachedFromLogicalTreeInitial;
+        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeFromChangedEvent;
+        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeFromChangedEvent;
+        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeFromGetter;
+        control.AttachedToLogicalTree += Control_AttachedToLogicalTreeFromGetter;
+        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeFromGetter;
+        control.DetachedFromLogicalTree += Control_DetachedFromLogicalTreeFromGetter;
 
         // Loaded / Unloaded
 
-        control.Loaded -= Control_LoadedRuntime;
-        control.Unloaded -= Control_UnloadedRuntime;
-        control.Loaded -= Control_LoadedInitial;
-        control.Loaded += Control_LoadedInitial;
-        control.Unloaded -= Control_UnloadedInitial;
-        control.Unloaded += Control_UnloadedInitial;
+        control.Loaded -= Control_LoadedFromChangedEvent;
+        control.Unloaded -= Control_UnloadedFromChangedEvent;
+        control.Loaded -= Control_LoadedFromGetter;
+        control.Loaded += Control_LoadedFromGetter;
+        control.Unloaded -= Control_UnloadedFromGetter;
+        control.Unloaded += Control_UnloadedFromGetter;
     }
 
-    private static void SetVisualTreeEventHandlersRuntime(AvaloniaObject obj)
+    private static void SetVisualTreeEventHandlersFromChangedEvent(AvaloniaObject obj)
     {
         if (obj is not Control control)
         {
@@ -160,35 +160,35 @@ public class Interaction
 
         // AttachedToVisualTree / DetachedFromVisualTree
 
-        control.AttachedToVisualTree -= Control_AttachedToVisualTreeInitial;
-        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeInitial;
-        control.AttachedToVisualTree -= Control_AttachedToVisualTreeRuntime;
-        control.AttachedToVisualTree += Control_AttachedToVisualTreeRuntime;
-        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeRuntime;
-        control.DetachedFromVisualTree += Control_DetachedFromVisualTreeRuntime;
+        control.AttachedToVisualTree -= Control_AttachedToVisualTreeFromGetter;
+        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeFromGetter;
+        control.AttachedToVisualTree -= Control_AttachedToVisualTreeFromChangedEvent;
+        control.AttachedToVisualTree += Control_AttachedToVisualTreeFromChangedEvent;
+        control.DetachedFromVisualTree -= Control_DetachedFromVisualTreeFromChangedEvent;
+        control.DetachedFromVisualTree += Control_DetachedFromVisualTreeFromChangedEvent;
 
         // AttachedToLogicalTree / DetachedFromLogicalTree
 
-        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeInitial;
-        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeInitial;
-        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeRuntime;
-        control.AttachedToLogicalTree += Control_AttachedToLogicalTreeRuntime;
-        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeRuntime;
-        control.DetachedFromLogicalTree += Control_DetachedFromLogicalTreeRuntime;
+        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeFromGetter;
+        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeFromGetter;
+        control.AttachedToLogicalTree -= Control_AttachedToLogicalTreeFromChangedEvent;
+        control.AttachedToLogicalTree += Control_AttachedToLogicalTreeFromChangedEvent;
+        control.DetachedFromLogicalTree -= Control_DetachedFromLogicalTreeFromChangedEvent;
+        control.DetachedFromLogicalTree += Control_DetachedFromLogicalTreeFromChangedEvent;
 
         // Loaded / Unloaded
 
-        control.Loaded -= Control_LoadedInitial;
-        control.Unloaded -= Control_UnloadedInitial;
-        control.Loaded -= Control_LoadedRuntime;
-        control.Loaded += Control_LoadedRuntime;
-        control.Unloaded -= Control_UnloadedRuntime;
-        control.Unloaded += Control_UnloadedRuntime;
+        control.Loaded -= Control_LoadedFromGetter;
+        control.Unloaded -= Control_UnloadedFromGetter;
+        control.Loaded -= Control_LoadedFromChangedEvent;
+        control.Loaded += Control_LoadedFromChangedEvent;
+        control.Unloaded -= Control_UnloadedFromChangedEvent;
+        control.Unloaded += Control_UnloadedFromChangedEvent;
     }
 
     // AttachedToVisualTree / DetachedFromVisualTree
 
-    private static void Control_AttachedToVisualTreeInitial(object? sender, VisualTreeAttachmentEventArgs e)
+    private static void Control_AttachedToVisualTreeFromGetter(object? sender, VisualTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -199,7 +199,7 @@ public class Interaction
         GetBehaviors(d).AttachedToVisualTree();
     }
 
-    private static void Control_DetachedFromVisualTreeInitial(object? sender, VisualTreeAttachmentEventArgs e)
+    private static void Control_DetachedFromVisualTreeFromGetter(object? sender, VisualTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -210,7 +210,7 @@ public class Interaction
         GetBehaviors(d).Detach();
     }
  
-    private static void Control_AttachedToVisualTreeRuntime(object? sender, VisualTreeAttachmentEventArgs e)
+    private static void Control_AttachedToVisualTreeFromChangedEvent(object? sender, VisualTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -220,7 +220,7 @@ public class Interaction
         GetBehaviors(d).AttachedToVisualTree();
     }
 
-    private static void Control_DetachedFromVisualTreeRuntime(object? sender, VisualTreeAttachmentEventArgs e)
+    private static void Control_DetachedFromVisualTreeFromChangedEvent(object? sender, VisualTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -232,7 +232,7 @@ public class Interaction
 
     // AttachedToLogicalTree / DetachedFromLogicalTree
 
-    private static void Control_AttachedToLogicalTreeInitial(object? sender, LogicalTreeAttachmentEventArgs e)
+    private static void Control_AttachedToLogicalTreeFromGetter(object? sender, LogicalTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -242,7 +242,7 @@ public class Interaction
         GetBehaviors(d).AttachedToLogicalTree();
     }
 
-    private static void Control_DetachedFromLogicalTreeInitial(object? sender, LogicalTreeAttachmentEventArgs e)
+    private static void Control_DetachedFromLogicalTreeFromGetter(object? sender, LogicalTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -252,7 +252,7 @@ public class Interaction
         GetBehaviors(d).DetachedFromLogicalTree();
     }
  
-    private static void Control_AttachedToLogicalTreeRuntime(object? sender, LogicalTreeAttachmentEventArgs e)
+    private static void Control_AttachedToLogicalTreeFromChangedEvent(object? sender, LogicalTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -262,7 +262,7 @@ public class Interaction
         GetBehaviors(d).AttachedToLogicalTree();
     }
 
-    private static void Control_DetachedFromLogicalTreeRuntime(object? sender, LogicalTreeAttachmentEventArgs e)
+    private static void Control_DetachedFromLogicalTreeFromChangedEvent(object? sender, LogicalTreeAttachmentEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -274,7 +274,7 @@ public class Interaction
 
     // Loaded / Unloaded
 
-    private static void Control_LoadedInitial(object? sender, RoutedEventArgs e)
+    private static void Control_LoadedFromGetter(object? sender, RoutedEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -284,7 +284,7 @@ public class Interaction
         GetBehaviors(d).Loaded();
     }
 
-    private static void Control_UnloadedInitial(object? sender, RoutedEventArgs e)
+    private static void Control_UnloadedFromGetter(object? sender, RoutedEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -294,7 +294,7 @@ public class Interaction
         GetBehaviors(d).Unloaded();
     }
  
-    private static void Control_LoadedRuntime(object? sender, RoutedEventArgs e)
+    private static void Control_LoadedFromChangedEvent(object? sender, RoutedEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
@@ -304,7 +304,7 @@ public class Interaction
         GetBehaviors(d).Loaded();
     }
 
-    private static void Control_UnloadedRuntime(object? sender, RoutedEventArgs e)
+    private static void Control_UnloadedFromChangedEvent(object? sender, RoutedEventArgs e)
     {
         if (sender is not AvaloniaObject d)
         {
