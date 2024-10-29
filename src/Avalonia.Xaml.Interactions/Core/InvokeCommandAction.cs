@@ -1,5 +1,4 @@
 ﻿using System.Windows.Input;
-using Avalonia.Xaml.Interactivity;
 using Avalonia.Data.Converters;
 
 namespace Avalonia.Xaml.Interactions.Core;
@@ -7,7 +6,7 @@ namespace Avalonia.Xaml.Interactions.Core;
 /// <summary>
 /// Executes a specified <see cref="System.Windows.Input.ICommand"/> when invoked. 
 /// </summary>
-public class InvokeCommandAction : Avalonia.Xaml.Interactivity.Action
+public class InvokeCommandAction : Interactivity.Action
 {
     /// <summary>
     /// Identifies the <seealso cref="Command"/> avalonia property.
@@ -100,7 +99,7 @@ public class InvokeCommandAction : Avalonia.Xaml.Interactivity.Action
     /// <summary>
     /// Executes the action.
     /// </summary>
-    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="IBehavior.AssociatedObject"/> or a target object.</param>
+    /// <param name="sender">The <see cref="object"/> that is passed to the action by the behavior. Generally this is <seealso cref="Avalonia.Xaml.Interactivity.IBehavior.AssociatedObject"/> or a target object.</param>
     /// <param name="parameter">The value of this parameter is determined by the caller.</param>
     /// <returns>True if the command is successfully executed; else false.</returns>
     public override object Execute(object? sender, object? parameter)
