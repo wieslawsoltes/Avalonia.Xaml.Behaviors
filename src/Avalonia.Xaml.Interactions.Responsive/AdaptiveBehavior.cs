@@ -100,11 +100,16 @@ public class AdaptiveBehavior : StyledElementBehavior<Control>
             throw new ArgumentNullException(nameof(sourceControl));
         }
 
+        Execute(sourceControl, Setters, sourceControl.GetValue(Visual.BoundsProperty));
+
         return sourceControl.GetObservable(Visual.BoundsProperty)
-            .Subscribe(new AnonymousObserver<Rect>(bounds => ValueChanged(sourceControl, Setters, bounds)));
+            .Subscribe(new AnonymousObserver<Rect>(bounds =>
+            {
+                Execute(sourceControl, Setters, bounds);
+            }));
     }
 
-    private void ValueChanged(Control? sourceControl, AvaloniaList<AdaptiveClassSetter>? setters, Rect bounds)
+    private void Execute(Control? sourceControl, AvaloniaList<AdaptiveClassSetter>? setters, Rect bounds)
     {
         if (sourceControl is null || setters is null)
         {
