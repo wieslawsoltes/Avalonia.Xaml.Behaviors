@@ -95,19 +95,31 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
     {
     }
 
-    void IBehaviorEventsHandler.AttachedToVisualTreeEventHandler() => OnAttachedToVisualTree();
+    void IBehaviorEventsHandler.AttachedToVisualTreeEventHandler()
+    {
+        AttachBehaviorToLogicalTree();
 
-    void IBehaviorEventsHandler.DetachedFromVisualTreeEventHandler() => OnDetachedFromVisualTree();
+        OnAttachedToVisualTree();
+    }
+
+    void IBehaviorEventsHandler.DetachedFromVisualTreeEventHandler()
+    {
+        DetachBehaviorFromLogicalTree();
+
+        OnDetachedFromVisualTree();
+    }
 
     void IBehaviorEventsHandler.AttachedToLogicalTreeEventHandler()
     {
-        AttachToLogicalTree();
+        AttachBehaviorToLogicalTree();
+
         OnAttachedToLogicalTree();
     }
 
     void IBehaviorEventsHandler.DetachedFromLogicalTreeEventHandler()
     {
-        DetachFromLogicalTree();
+        DetachBehaviorFromLogicalTree();
+
         OnDetachedFromLogicalTree();
     }
 
@@ -175,18 +187,21 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
     {
     }
 
-    private void AttachToLogicalTree()
+    private void AttachBehaviorToLogicalTree()
     {
         if (AssociatedObject is not StyledElement styledElement)
         {
             return;
         }
 
-        ((ISetLogicalParent)this).SetParent(null);
-        ((ISetLogicalParent)this).SetParent(styledElement);
+        if (styledElement.Parent is not null)
+        {
+            ((ISetLogicalParent)this).SetParent(null);
+            ((ISetLogicalParent)this).SetParent(styledElement);
+        }
     }
 
-    private void DetachFromLogicalTree()
+    private void DetachBehaviorFromLogicalTree()
     {
         ((ISetLogicalParent)this).SetParent(null);
     }
