@@ -72,12 +72,3 @@ jobs:
       PublishFramework: ${{ variables.PublishFramework }}
       PublishProject: ${{ variables.PublishProject }}
       PublishRuntime: 'osx-x64'
-
-  - template: Publish-Bash.yml@templates
-    parameters:
-        name: 'Publish_macOS_arm64'
-        vmImage: 'macOS-14'
-        BuildConfiguration: ${{ variables.BuildConfiguration }}
-        PublishFramework: ${{ variables.PublishFramework }}
-        PublishProject: ${{ variables.PublishProject }}
-        PublishRuntime: 'osx-arm64'
