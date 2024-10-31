@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Avalonia.Xaml.Interactions.UnitTests.Core;
 
-[UsesVerify]
 public class CallMethodActionTests
 {
     /// <summary>
