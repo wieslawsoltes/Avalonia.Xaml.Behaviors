@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" />
-    <PackageReference Include="System.Reactive" />
   </ItemGroup>
 
   <PropertyGroup>
