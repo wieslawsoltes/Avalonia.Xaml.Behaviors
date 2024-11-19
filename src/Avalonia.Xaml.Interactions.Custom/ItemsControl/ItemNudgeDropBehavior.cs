@@ -7,12 +7,21 @@ using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
 
+/// <summary>
+/// 
+/// </summary>
 public class ItemNudgeDropBehavior : StyledElementBehavior<ItemsControl>
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static readonly StyledProperty<Orientation> OrientationProperty =
         AvaloniaProperty.Register<ItemNudgeDropBehavior, Orientation>(nameof(Orientation),
             defaultValue: Orientation.Vertical);
 
+    /// <summary>
+    /// 
+    /// </summary>
     public Orientation Orientation
     {
         get => GetValue(OrientationProperty);
