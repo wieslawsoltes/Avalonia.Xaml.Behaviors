@@ -1,4 +1,3 @@
-using System.Reactive.Disposables;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -15,14 +14,15 @@ public class ButtonExecuteCommandOnKeyDownBehavior : ExecuteCommandOnKeyBehavior
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="disposables"></param>
-    protected override void OnAttachedToVisualTree(CompositeDisposable disposables)
+    /// <returns></returns>
+    protected override System.IDisposable OnAttachedToVisualTreeOverride()
     {
         if (AssociatedObject?.GetVisualRoot() is InputElement inputRoot)
         {
-            var disposable = inputRoot.AddDisposableHandler(InputElement.KeyDownEvent, RootDefaultKeyDown);
-            disposables.Add(disposable);
+            return inputRoot.AddDisposableHandler(InputElement.KeyDownEvent, RootDefaultKeyDown);
         }
+        
+        return DisposableAction.Empty;
     }
 
     private void RootDefaultKeyDown(object? sender, KeyEventArgs e)

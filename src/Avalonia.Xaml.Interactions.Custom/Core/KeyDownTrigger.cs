@@ -1,4 +1,4 @@
-using System.Reactive.Disposables;
+using System;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Xaml.Interactivity;
@@ -33,14 +33,15 @@ public class KeyDownTrigger : RoutedEventTriggerBase
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="disposables"></param>
-    protected override void OnAttached(CompositeDisposable disposables)
+    /// <returns></returns>
+    protected override IDisposable OnAttachedOverride()
     {
         if (AssociatedObject is InputElement element)
         {
-            var disposable = element.AddDisposableHandler(InputElement.KeyDownEvent, OnKeyDown, EventRoutingStrategy);
-            disposables.Add(disposable);
+            return element.AddDisposableHandler(InputElement.KeyDownEvent, OnKeyDown, EventRoutingStrategy);
         }
+        
+        return DisposableAction.Empty;
     }
 
     private void OnKeyDown(object? sender, KeyEventArgs e)

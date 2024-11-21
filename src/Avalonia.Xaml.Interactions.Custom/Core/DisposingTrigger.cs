@@ -1,4 +1,4 @@
-using System.Reactive.Disposables;
+using System;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
@@ -8,7 +8,7 @@ namespace Avalonia.Xaml.Interactions.Custom;
 /// </summary>
 public abstract class DisposingTrigger : StyledElementTrigger
 {
-    private readonly CompositeDisposable _disposables = new();
+    private IDisposable? _disposable;
 
     /// <summary>
     /// 
@@ -17,14 +17,15 @@ public abstract class DisposingTrigger : StyledElementTrigger
     {
         base.OnAttached();
 
-        OnAttached(_disposables);
+        _disposable?.Dispose();
+        _disposable = OnAttachedOverride();
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="disposables"></param>
-    protected abstract void OnAttached(CompositeDisposable disposables);
+    /// <returns>A disposable resource to be disposed when the behavior is detached.</returns>
+    protected abstract IDisposable OnAttachedOverride();
 
     /// <summary>
     /// 
@@ -33,6 +34,6 @@ public abstract class DisposingTrigger : StyledElementTrigger
     {
         base.OnDetaching();
 
-        _disposables.Dispose();
+        _disposable?.Dispose();
     }
 }
