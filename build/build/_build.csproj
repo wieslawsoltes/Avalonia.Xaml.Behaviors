@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Nuke.Common" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" />
   </ItemGroup>
 
   <ItemGroup>
