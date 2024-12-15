@@ -6,30 +6,18 @@ using ReactiveUI;
 
 namespace BehaviorsTestApplication.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase
 {
     private int _value;
-    private int _count;
-    private double _position;
-    private ObservableCollection<ItemViewModel>? _items;
 
-    public int Count
-    {
-        get => _count;
-        set => this.RaiseAndSetIfChanged(ref _count, value);
-    }
+    [Reactive]
+    public partial int Count { get; set; }
 
-    public double Position
-    {
-        get => _position;
-        set => this.RaiseAndSetIfChanged(ref _position, value);
-    }
+    [Reactive]
+    public partial double Position { get; set; }
 
-    public ObservableCollection<ItemViewModel>? Items
-    {
-        get => _items;
-        set => this.RaiseAndSetIfChanged(ref _items, value);
-    }
+    [Reactive]
+    public partial ObservableCollection<ItemViewModel>? Items { get; set; }
 
     public IObservable<int> Values { get; }
 
