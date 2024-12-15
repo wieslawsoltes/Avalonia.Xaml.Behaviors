@@ -11,8 +11,14 @@
 
   <PropertyGroup>
     <UseBackingFields>true</UseBackingFields>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <UseBackingFields>true</UseBackingFields>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Desktop" />
