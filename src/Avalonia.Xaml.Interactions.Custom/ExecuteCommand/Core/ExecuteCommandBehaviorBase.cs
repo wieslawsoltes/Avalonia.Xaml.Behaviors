@@ -77,6 +77,9 @@ public abstract class ExecuteCommandBehaviorBase : AttachedToVisualTreeBehavior<
         set => SetValue(FocusControlProperty, value);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [ResolveByName]
     public Control? SourceControl
     {
