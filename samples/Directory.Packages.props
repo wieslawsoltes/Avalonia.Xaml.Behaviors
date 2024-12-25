@@ -13,7 +13,7 @@
     <PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="Avalonia.Headless.XUnit" Version="$(AvaloniaVersion)" />
-    <PackageVersion Include="ReactiveGenerator" Version="0.9.6" />
+    <PackageVersion Include="ReactiveGenerator" Version="0.9.8" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="System.Reactive" Version="6.0.0" />
