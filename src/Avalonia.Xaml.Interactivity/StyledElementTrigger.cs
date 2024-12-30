@@ -20,4 +20,35 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
     /// </summary>
     [Content]
     public ActionCollection Actions => _actions ??= [];
+
+    internal override void AttachBehaviorToLogicalTree()
+    {
+        base.AttachBehaviorToLogicalTree();
+
+        if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
+        {
+            return;
+        }
+
+        foreach (var action in Actions)
+        {
+            if (action is StyledElementAction styledElementAction)
+            {
+                styledElementAction.AttachActionToLogicalTree(styledElement);
+            }
+        }
+    }
+
+    internal override void DetachBehaviorFromLogicalTree()
+    {
+        base.DetachBehaviorFromLogicalTree();
+        
+        foreach (var action in Actions)
+        {
+            if (action is StyledElementAction styledElementAction)
+            {
+                styledElementAction.DetachActionFromLogicalTree();
+            }
+        }
+    }
 }

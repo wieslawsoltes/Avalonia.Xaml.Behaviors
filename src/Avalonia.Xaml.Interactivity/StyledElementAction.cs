@@ -1,6 +1,6 @@
-namespace Avalonia.Xaml.Interactivity;
+using Avalonia.Controls;
 
-// TODO: Use StyledElementAction and add StyledElementAction to logical tree like StyledElementBehavior
+namespace Avalonia.Xaml.Interactivity;
 
 /// <summary>
 /// A base class for action that calls a method on a specified object when invoked.
@@ -31,4 +31,15 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// <remarks> An example of parameter usage is EventTriggerBehavior, which passes the EventArgs as a parameter to its actions.</remarks>
     /// <returns>Returns the result of the action.</returns>
     public abstract object? Execute(object? sender, object? parameter);
+
+    internal void AttachActionToLogicalTree(StyledElement parent)
+    {
+        ((ISetLogicalParent)this).SetParent(null);
+        ((ISetLogicalParent)this).SetParent(parent);
+    }
+
+    internal void DetachActionFromLogicalTree()
+    {
+        ((ISetLogicalParent)this).SetParent(null);
+    }
 }
