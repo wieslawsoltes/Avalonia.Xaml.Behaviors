@@ -14,7 +14,7 @@ namespace Avalonia.Xaml.Interactions.Core;
 /// An action that calls a method on a specified object when invoked.
 /// </summary>
 [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
+public class CallMethodAction : Avalonia.Xaml.Interactivity.StyledElementAction
 {
     private Type? _targetObjectType;
     private readonly List<MethodDescriptor> _methodDescriptors = [];
