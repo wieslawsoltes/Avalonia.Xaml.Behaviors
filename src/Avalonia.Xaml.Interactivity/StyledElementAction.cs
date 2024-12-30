@@ -11,7 +11,7 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// Identifies the <seealso cref="IsEnabled"/> avalonia property.
     /// </summary>
     public static readonly StyledProperty<bool> IsEnabledProperty =
-        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.Action, bool>(nameof(IsEnabled), defaultValue: true);
+        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.StyledElementAction, bool>(nameof(IsEnabled), defaultValue: true);
 
     /// <summary>
     /// Gets or sets a value indicating whether this instance is enabled.
@@ -22,7 +22,7 @@ public abstract class StyledElementAction : StyledElement, IAction
         get => GetValue(IsEnabledProperty);
         set => SetValue(IsEnabledProperty, value);
     }
-    
+
     /// <summary>
     /// Executes the action.
     /// </summary>
