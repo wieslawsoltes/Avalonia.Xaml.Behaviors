@@ -30,7 +30,7 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
             return;
         }
 
-        var parent = styledElement;
+        var parent = this;
 
         foreach (var action in Actions)
         {
