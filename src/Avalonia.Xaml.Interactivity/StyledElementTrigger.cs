@@ -30,11 +30,13 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
             return;
         }
 
+        var parent = styledElement;
+
         foreach (var action in Actions)
         {
             if (action is StyledElementAction styledElementAction)
             {
-                styledElementAction.AttachActionToLogicalTree(styledElement);
+                styledElementAction.AttachActionToLogicalTree(parent);
             }
         }
     }
