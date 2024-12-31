@@ -20,7 +20,7 @@ public sealed class DragControlBehavior : StyledElementBehavior<Control>
     private Point _previous;
 
     /// <summary>
-    /// Gets or sets the target control to be moved around instead of <see cref="IBehavior.AssociatedObject"/>. This is a avalonia property.
+    /// Gets or sets the target control to be moved around instead of <see cref="IBehavior.AssociatedObject"/>. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public Control? TargetControl

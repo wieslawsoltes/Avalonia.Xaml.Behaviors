@@ -32,7 +32,7 @@ public class ChangeAvaloniaPropertyAction : Avalonia.Xaml.Interactivity.StyledEl
         AvaloniaProperty.Register<ChangeAvaloniaPropertyAction, object?>(nameof(Value));
 
     /// <summary>
-    /// Gets or sets the name of the Avalonia property to change. This is a avalonia property.
+    /// Gets or sets the name of the Avalonia property to change. This is an avalonia property.
     /// </summary>
     public AvaloniaProperty? TargetProperty
     {
@@ -41,7 +41,7 @@ public class ChangeAvaloniaPropertyAction : Avalonia.Xaml.Interactivity.StyledEl
     }
 
     /// <summary>
-    /// Gets or sets the value to set. This is a avalonia property.
+    /// Gets or sets the value to set. This is an avalonia property.
     /// </summary>
     public object? Value
     {
@@ -51,7 +51,7 @@ public class ChangeAvaloniaPropertyAction : Avalonia.Xaml.Interactivity.StyledEl
 
     /// <summary>
     /// Gets or sets the Avalonia object whose property will be changed.
-    /// If <seealso cref="TargetObject"/> is not set or cannot be resolved, the sender of <seealso cref="Execute"/> will be used. This is a avalonia property.
+    /// If <seealso cref="TargetObject"/> is not set or cannot be resolved, the sender of <seealso cref="Execute"/> will be used. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public AvaloniaObject? TargetObject

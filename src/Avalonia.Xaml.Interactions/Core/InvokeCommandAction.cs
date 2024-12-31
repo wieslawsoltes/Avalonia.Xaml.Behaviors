@@ -40,7 +40,7 @@ public class InvokeCommandAction : Interactivity.StyledElementAction
         AvaloniaProperty.Register<InvokeCommandAction, string?>(nameof(InputConverterLanguage), string.Empty);
 
     /// <summary>
-    /// Gets or sets the command this action should invoke. This is a avalonia property.
+    /// Gets or sets the command this action should invoke. This is an avalonia property.
     /// </summary>
     public ICommand? Command
     {

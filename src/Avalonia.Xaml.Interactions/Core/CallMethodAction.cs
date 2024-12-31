@@ -33,7 +33,7 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.StyledElementAction
         AvaloniaProperty.Register<CallMethodAction, object?>(nameof(TargetObject));
 
     /// <summary>
-    /// Gets or sets the name of the method to invoke. This is a avalonia property.
+    /// Gets or sets the name of the method to invoke. This is an avalonia property.
     /// </summary>
     public string? MethodName
     {
@@ -42,7 +42,7 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.StyledElementAction
     }
 
     /// <summary>
-    /// Gets or sets the object that exposes the method of interest. This is a avalonia property.
+    /// Gets or sets the object that exposes the method of interest. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public object? TargetObject

@@ -21,7 +21,7 @@ public class PopupAction : Avalonia.Xaml.Interactivity.StyledElementAction
         AvaloniaProperty.Register<PopupAction, Control?>(nameof(Child));
 
     /// <summary>
-    /// Gets or sets the popup Child control. This is a avalonia property.
+    /// Gets or sets the popup Child control. This is an avalonia property.
     /// </summary>
     [Content]
     public Control? Child

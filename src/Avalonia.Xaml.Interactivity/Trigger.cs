@@ -16,7 +16,7 @@ public abstract class Trigger : Behavior, ITrigger
     private ActionCollection? _actions;
 
     /// <summary>
-    /// Gets the collection of actions associated with the behavior. This is a avalonia property.
+    /// Gets the collection of actions associated with the behavior. This is an avalonia property.
     /// </summary>
     [Content]
     public ActionCollection Actions => _actions ??= [];

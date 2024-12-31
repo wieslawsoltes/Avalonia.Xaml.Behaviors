@@ -31,7 +31,7 @@ public class DataTriggerBehavior : StyledElementTrigger
         AvaloniaProperty.Register<DataTriggerBehavior, object?>(nameof(Value));
 
     /// <summary>
-    /// Gets or sets the bound object that the <see cref="DataTriggerBehavior"/> will listen to. This is a avalonia property.
+    /// Gets or sets the bound object that the <see cref="DataTriggerBehavior"/> will listen to. This is an avalonia property.
     /// </summary>
     public object? Binding
     {
@@ -40,7 +40,7 @@ public class DataTriggerBehavior : StyledElementTrigger
     }
 
     /// <summary>
-    /// Gets or sets the type of comparison to be performed between <see cref="DataTriggerBehavior.Binding"/> and <see cref="DataTriggerBehavior.Value"/>. This is a avalonia property.
+    /// Gets or sets the type of comparison to be performed between <see cref="DataTriggerBehavior.Binding"/> and <see cref="DataTriggerBehavior.Value"/>. This is an avalonia property.
     /// </summary>
     public ComparisonConditionType ComparisonCondition
     {
@@ -49,7 +49,7 @@ public class DataTriggerBehavior : StyledElementTrigger
     }
 
     /// <summary>
-    /// Gets or sets the value to be compared with the value of <see cref="DataTriggerBehavior.Binding"/>. This is a avalonia property.
+    /// Gets or sets the value to be compared with the value of <see cref="DataTriggerBehavior.Binding"/>. This is an avalonia property.
     /// </summary>
     public object? Value
     {
