@@ -16,6 +16,11 @@
           <BehaviorCollectionTemplate>
             <BehaviorCollection>
               <EventTriggerBehavior EventName="PointerPressed">
+                <ChangeAvaloniaPropertyAction TargetObject="{Binding $parent[ItemsControl]}"
+                                              TargetProperty="{x:Static TemplatedControl.BackgroundProperty}"
+                                              Value="{Binding Color}" />
+              </EventTriggerBehavior>
+              <EventTriggerBehavior EventName="DoubleTapped">
                 <PopupAction>
                   <Border Background="White"
                           BorderBrush="Black"

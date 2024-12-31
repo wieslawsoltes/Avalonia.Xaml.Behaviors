@@ -36,7 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
         ResetMoveCommand = ReactiveCommand.Create(() => Position = 100.0);
         Items =
         [
-            new("First Item")
+            new("First Item", "Red")
             {
                 Items =
                 [
@@ -44,7 +44,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 ]
             },
 
-            new("Second Item")
+            new("Second Item", "Green")
             {
                 Items =
                 [
@@ -52,7 +52,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 ]
             },
 
-            new("Third Item")
+            new("Third Item", "Blue")
             {
                 Items =
                 [
@@ -60,7 +60,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 ]
             },
 
-            new("Fourth Item")
+            new("Fourth Item", "Orange")
             {
                 Items =
                 [
@@ -68,7 +68,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 ]
             },
 
-            new("Fifth Item")
+            new("Fifth Item", "Purple")
             {
                 Items =
                 [
@@ -76,7 +76,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 ]
             },
 
-            new("Sixth Item")
+            new("Sixth Item", "Pink")
             {
                 Items =
                 [
