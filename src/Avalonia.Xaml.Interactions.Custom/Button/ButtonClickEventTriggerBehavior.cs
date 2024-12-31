@@ -19,7 +19,7 @@ public class ButtonClickEventTriggerBehavior : StyledElementTrigger<Button>
         AvaloniaProperty.Register<ButtonClickEventTriggerBehavior, KeyModifiers>(nameof(KeyModifiers));
 
     /// <summary>
-    /// Gets or sets the required key modifiers to execute <see cref="Button.ClickEvent"/> event handler. This is a avalonia property.
+    /// Gets or sets the required key modifiers to execute <see cref="Button.ClickEvent"/> event handler. This is an avalonia property.
     /// </summary>
     public KeyModifiers KeyModifiers
     {

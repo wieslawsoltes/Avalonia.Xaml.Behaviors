@@ -17,7 +17,7 @@ public class HideOnLostFocusBehavior : StyledElementBehavior<Control>
         AvaloniaProperty.Register<HideOnLostFocusBehavior, Control?>(nameof(TargetControl));
 
     /// <summary>
-    /// Gets or sets the target control. This is a avalonia property.
+    /// Gets or sets the target control. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public Control? TargetControl

@@ -14,7 +14,7 @@ namespace Avalonia.Xaml.Interactions.Core;
 /// An action that calls a method on a specified object when invoked.
 /// </summary>
 [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
+public class CallMethodAction : Avalonia.Xaml.Interactivity.StyledElementAction
 {
     private Type? _targetObjectType;
     private readonly List<MethodDescriptor> _methodDescriptors = [];
@@ -33,7 +33,7 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
         AvaloniaProperty.Register<CallMethodAction, object?>(nameof(TargetObject));
 
     /// <summary>
-    /// Gets or sets the name of the method to invoke. This is a avalonia property.
+    /// Gets or sets the name of the method to invoke. This is an avalonia property.
     /// </summary>
     public string? MethodName
     {
@@ -42,7 +42,7 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.Action
     }
 
     /// <summary>
-    /// Gets or sets the object that exposes the method of interest. This is a avalonia property.
+    /// Gets or sets the object that exposes the method of interest. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public object? TargetObject

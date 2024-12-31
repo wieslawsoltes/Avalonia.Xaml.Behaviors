@@ -64,5 +64,8 @@
     <TabItem Header="Sliding Animation">
       <pages:SlidingAnimationView />
     </TabItem>
+    <TabItem Header="BehaviorCollectionTemplate">
+      <pages:BehaviorCollectionTemplateView />
+    </TabItem>
   </TabControl>
 </UserControl>

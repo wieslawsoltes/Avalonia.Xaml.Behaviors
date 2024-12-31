@@ -187,21 +187,18 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
     {
     }
 
-    private void AttachBehaviorToLogicalTree()
+    internal virtual void AttachBehaviorToLogicalTree()
     {
-        if (AssociatedObject is not StyledElement styledElement)
+        if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
         {
             return;
         }
 
-        if (styledElement.Parent is not null)
-        {
-            ((ISetLogicalParent)this).SetParent(null);
-            ((ISetLogicalParent)this).SetParent(styledElement);
-        }
+        ((ISetLogicalParent)this).SetParent(null);
+        ((ISetLogicalParent)this).SetParent(styledElement);
     }
 
-    private void DetachBehaviorFromLogicalTree()
+    internal virtual void DetachBehaviorFromLogicalTree()
     {
         ((ISetLogicalParent)this).SetParent(null);
     }

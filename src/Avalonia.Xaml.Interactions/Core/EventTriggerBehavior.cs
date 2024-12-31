@@ -33,7 +33,7 @@ public class EventTriggerBehavior : StyledElementTrigger
     private bool _isLoadedEventRegistered;
 
     /// <summary>
-    /// Gets or sets the name of the event to listen for. This is a avalonia property.
+    /// Gets or sets the name of the event to listen for. This is an avalonia property.
     /// </summary>
     public string? EventName
     {
@@ -43,7 +43,7 @@ public class EventTriggerBehavior : StyledElementTrigger
 
     /// <summary>
     /// Gets or sets the source object from which this behavior listens for events.
-    /// If <seealso cref="SourceObject"/> is not set, the source will default to <seealso cref="IBehavior.AssociatedObject"/>. This is a avalonia property.
+    /// If <seealso cref="SourceObject"/> is not set, the source will default to <seealso cref="IBehavior.AssociatedObject"/>. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public object? SourceObject

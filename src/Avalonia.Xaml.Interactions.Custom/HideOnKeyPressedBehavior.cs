@@ -23,7 +23,7 @@ public class HideOnKeyPressedBehavior : StyledElementBehavior<Control>
         AvaloniaProperty.Register<HideOnKeyPressedBehavior, Key>(nameof(Key), Key.Escape);
 
     /// <summary>
-    /// Gets or sets the target control. This is a avalonia property.
+    /// Gets or sets the target control. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public Control? TargetControl
@@ -33,7 +33,7 @@ public class HideOnKeyPressedBehavior : StyledElementBehavior<Control>
     }
 
     /// <summary>
-    /// Gets or sets the key. This is a avalonia property.
+    /// Gets or sets the key. This is an avalonia property.
     /// </summary>
     public Key Key
     {

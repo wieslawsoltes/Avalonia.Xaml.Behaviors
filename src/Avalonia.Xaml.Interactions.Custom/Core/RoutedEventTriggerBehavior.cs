@@ -33,7 +33,7 @@ public class RoutedEventTriggerBehavior : StyledElementTrigger<Interactive>
     private bool _isAttached;
 
     /// <summary>
-    /// Gets or sets routing event to listen for. This is a avalonia property.
+    /// Gets or sets routing event to listen for. This is an avalonia property.
     /// </summary>
     public RoutedEvent? RoutedEvent
     {
@@ -42,7 +42,7 @@ public class RoutedEventTriggerBehavior : StyledElementTrigger<Interactive>
     }
 
     /// <summary>
-    /// Gets or sets the routing event <see cref="RoutingStrategies"/>. This is a avalonia property.
+    /// Gets or sets the routing event <see cref="RoutingStrategies"/>. This is an avalonia property.
     /// </summary>
     public RoutingStrategies RoutingStrategies
     {
@@ -52,7 +52,7 @@ public class RoutedEventTriggerBehavior : StyledElementTrigger<Interactive>
 
     /// <summary>
     /// Gets or sets the source object from which this behavior listens for events.
-    /// If <seealso cref="SourceInteractive"/> is not set, the source will default to <seealso cref="IBehavior.AssociatedObject"/>. This is a avalonia property.
+    /// If <seealso cref="SourceInteractive"/> is not set, the source will default to <seealso cref="IBehavior.AssociatedObject"/>. This is an avalonia property.
     /// </summary>
     [ResolveByName]
     public Interactive? SourceInteractive
