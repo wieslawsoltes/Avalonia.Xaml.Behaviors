@@ -194,19 +194,32 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
             return;
         }
 
+        // Required for $parent binding in XAML
         ((ISetLogicalParent)this).SetParent(null);
         ((ISetLogicalParent)this).SetParent(styledElement);
+
+        // Required for TemplateBinding in XAML
+        if (styledElement.TemplatedParent is { } templatedParent)
+        {
+            TemplatedParentHelper.SetTemplatedParent(this, templatedParent);
+        }
     }
 
     internal virtual void DetachBehaviorFromLogicalTree()
     {
         ((ISetLogicalParent)this).SetParent(null);
+
+        if (AssociatedObject is StyledElement { TemplatedParent: not null })
+        {
+            TemplatedParentHelper.SetTemplatedParent(this, null);
+        }
     }
 
     private IDisposable? SynchronizeDataContext(AvaloniaObject associatedObject)
     {
         if (associatedObject is StyledElement styledElement)
         {
+            // Required for data context binding in XAML
             return styledElement
                 .GetObservable(DataContextProperty)
                 .Subscribe(new AnonymousObserver<object?>(x =>
