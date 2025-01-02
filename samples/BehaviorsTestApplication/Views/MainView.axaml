@@ -67,5 +67,8 @@
     <TabItem Header="BehaviorCollectionTemplate">
       <pages:BehaviorCollectionTemplateView />
     </TabItem>
+    <TabItem Header="TemplateBinding">
+      <pages:TemplateBindingView />
+    </TabItem>
   </TabControl>
 </UserControl>
