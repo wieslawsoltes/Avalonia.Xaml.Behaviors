@@ -43,14 +43,16 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
 
     internal override void DetachBehaviorFromLogicalTree()
     {
-        base.DetachBehaviorFromLogicalTree();
-        
+        var parent = this;
+
         foreach (var action in Actions)
         {
             if (action is StyledElementAction styledElementAction)
             {
-                styledElementAction.DetachActionFromLogicalTree();
+                styledElementAction.DetachActionFromLogicalTree(parent);
             }
         }
+
+        base.DetachBehaviorFromLogicalTree();
     }
 }
