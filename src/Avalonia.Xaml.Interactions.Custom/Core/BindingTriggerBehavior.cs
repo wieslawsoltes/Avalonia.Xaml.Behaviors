@@ -4,7 +4,7 @@ using Avalonia.Data;
 using Avalonia.Reactive;
 using Avalonia.Xaml.Interactivity;
 
-namespace Avalonia.Xaml.Interactions.Core;
+namespace Avalonia.Xaml.Interactions.Custom;
 
 /// <summary>
 /// A behavior that performs actions when the bound data meets a specified condition.
@@ -118,10 +118,16 @@ public class BindingTriggerBehavior : StyledElementTrigger
             return;
         }
 
-        // Some value has changed--either the binding value, reference value, or the comparison condition. Re-evaluate the equation.
-        if (ComparisonConditionTypeHelper.Compare(behavior.BindingValue, behavior.ComparisonCondition, behavior.Value))
+        // NOTE: In UWP version binding null check is not present but Avalonia throws exception as Bindings are null when first initialized.
+        var binding = behavior.BindingValue;
+        if (binding is not null)
         {
-            Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, args);
+            // Some value has changed--either the binding value, reference value, or the comparison condition. Re-evaluate the equation.
+            if (ComparisonConditionTypeHelper.Compare(behavior.BindingValue, behavior.ComparisonCondition,
+                    behavior.Value))
+            {
+                Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, args);
+            }
         }
     }
 }
