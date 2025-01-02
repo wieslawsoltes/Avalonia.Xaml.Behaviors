@@ -1,10 +1,12 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Avalonia.Xaml.Interactivity;
 
 internal static class ComparisonConditionTypeHelper
 {
+    [RequiresUnreferencedCode("Calls Avalonia.Xaml.Interactivity.TypeConverterHelper.Convert(String, Type)")]
     public static bool Compare(object? leftOperand, ComparisonConditionType operatorType, object? rightOperand)
     {
         if (leftOperand is not null && rightOperand is not null)
