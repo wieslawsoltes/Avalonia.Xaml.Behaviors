@@ -41,7 +41,7 @@
                                     PropertyName="ColumnDefinitions">
                 <ChangePropertyAction.Value>
                   <ColumnDefinitions>
-                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="0" />
                     <ColumnDefinition Width="*" />
                   </ColumnDefinitions>
                 </ChangePropertyAction.Value>
