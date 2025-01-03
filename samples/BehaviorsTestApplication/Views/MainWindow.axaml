@@ -1,7 +1,15 @@
 <Window x:Class="BehaviorsTestApplication.Views.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BehaviorsTestApplication.ViewModels"
         xmlns:views="using:BehaviorsTestApplication.Views"
-        Title="XamlBehaviors Test Application" Width="1000" Height="700">
+        Title="XamlBehaviors Test Application" Width="1000" Height="700"
+        x:DataType="vm:MainWindowViewModel"
+        x:CompileBindings="False">
+  <Interaction.Behaviors>
+    <EventTriggerBehavior EventName="Opened">
+      <InvokeCommandAction Command="{Binding InitializeCommand, Mode=OneTime}" />
+    </EventTriggerBehavior>
+  </Interaction.Behaviors>
   <views:MainView />
 </Window>

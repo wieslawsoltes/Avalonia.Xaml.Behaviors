@@ -21,6 +21,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public IObservable<int> Values { get; }
 
+    public ICommand InitializeCommand { get; set; }
+
     public ICommand MoveLeftCommand { get; set; }
 
     public ICommand MoveRightCommand { get; set; }
@@ -31,6 +33,8 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Count = 0;
         Position = 100.0;
+        InitializeCommand = ReactiveCommand.Create(Initialize);
+        MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
         MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
         MoveRightCommand = ReactiveCommand.Create(() => Position += 5.0);
         ResetMoveCommand = ReactiveCommand.Create(() => Position = 100.0);
@@ -87,6 +91,11 @@ public partial class MainWindowViewModel : ViewModelBase
         ];
 
         Values = Observable.Interval(TimeSpan.FromSeconds(1)).Select(_ => _value++);
+    }
+
+    private void Initialize()
+    {
+        Console.WriteLine("InitializeCommand");
     }
 
     public void IncrementCount() => Count++;
