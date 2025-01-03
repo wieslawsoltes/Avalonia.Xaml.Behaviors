@@ -12,7 +12,7 @@
         <Grid Name="SideMenuGrid">
           <Interaction.Behaviors>
             <!--
-            NOTE: The TemplateBinding for behavior will not work as DataTriggerBehavior has no TemplatedParent set.
+            NOTE: The TemplateBinding for behavior will work as DataTriggerBehavior has TemplatedParent set.
             {TemplateBinding IsMenuOpen}
             {Binding IsMenuOpen, RelativeSource={RelativeSource TemplatedParent}}
             -->
@@ -30,7 +30,7 @@
               </ChangePropertyAction>
             </DataTriggerBehavior>
             <!--
-            NOTE: The TemplateBinding for behavior will not work as DataTriggerBehavior has no TemplatedParent set.
+            NOTE: The TemplateBinding for behavior will work as DataTriggerBehavior has TemplatedParent set.
             {TemplateBinding IsMenuOpen}
             {Binding IsMenuOpen, RelativeSource={RelativeSource TemplatedParent}}
             -->
