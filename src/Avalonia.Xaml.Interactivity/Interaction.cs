@@ -149,6 +149,13 @@ public class Interaction
         control.Loaded += Control_LoadedFromGetter;
         control.Unloaded -= Control_UnloadedFromGetter;
         control.Unloaded += Control_UnloadedFromGetter;
+
+        if (obj is TopLevel topLevel)
+        {
+            topLevel.Opened -= TopLevel_OpenedFromChangedEvent;
+            topLevel.Opened -= TopLevel_OpenedFromGetter;
+            topLevel.Opened += TopLevel_OpenedFromGetter;
+        }
     }
 
     private static void SetVisualTreeEventHandlersFromChangedEvent(AvaloniaObject obj)
@@ -184,6 +191,13 @@ public class Interaction
         control.Loaded += Control_LoadedFromChangedEvent;
         control.Unloaded -= Control_UnloadedFromChangedEvent;
         control.Unloaded += Control_UnloadedFromChangedEvent;
+
+        if (obj is TopLevel topLevel)
+        {
+            topLevel.Opened -= TopLevel_OpenedFromGetter;
+            topLevel.Opened -= TopLevel_OpenedFromChangedEvent;
+            topLevel.Opened += TopLevel_OpenedFromChangedEvent;
+        }
     }
 
     // AttachedToVisualTree / DetachedFromVisualTree
@@ -312,5 +326,30 @@ public class Interaction
         }
 
         GetBehaviors(d).Unloaded();
+    }
+    
+    // TopLevel Opened
+
+    private static void TopLevel_OpenedFromGetter(object sender, EventArgs e)
+    {
+        if (sender is not AvaloniaObject d)
+        {
+            return;
+        }
+
+        GetBehaviors(d).Attach(d);
+        GetBehaviors(d).AttachedToVisualTree();
+        GetBehaviors(d).AttachedToLogicalTree();
+    }
+
+    private static void TopLevel_OpenedFromChangedEvent(object sender, EventArgs e)
+    {
+        if (sender is not AvaloniaObject d)
+        {
+            return;
+        }
+
+        GetBehaviors(d).AttachedToVisualTree();
+        GetBehaviors(d).AttachedToLogicalTree();
     }
 }
