@@ -61,6 +61,12 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
         Debug.Assert(associatedObject is not null, "Cannot attach the behavior to a null object.");
         AssociatedObject = associatedObject ?? throw new ArgumentNullException(nameof(associatedObject));
         _dataContextDisposable = SynchronizeDataContext(associatedObject);
+        
+        // NOTE: Special case handling for TopLevel as it does not trigger attached to logical or visual tree events.
+        if (AssociatedObject is TopLevel)
+        {
+            AttachBehaviorToLogicalTree();
+        }
 
         OnAttached();
     }
@@ -189,17 +195,32 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
 
     internal virtual void AttachBehaviorToLogicalTree()
     {
-        if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
+        StyledElement? parent = null;
+        AvaloniaObject? templatedParent = null;
+
+        if (AssociatedObject is TopLevel topLevel)
         {
-            return;
+            parent = topLevel;
+            templatedParent = topLevel.TemplatedParent;
+        }
+
+        if (parent is null)
+        {
+            if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
+            {
+                return;
+            }
+
+            parent = styledElement;
+            templatedParent = styledElement.TemplatedParent;
         }
 
         // Required for $parent binding in XAML
         ((ISetLogicalParent)this).SetParent(null);
-        ((ISetLogicalParent)this).SetParent(styledElement);
+        ((ISetLogicalParent)this).SetParent(parent);
 
         // Required for TemplateBinding in XAML
-        if (styledElement.TemplatedParent is { } templatedParent)
+        if (templatedParent is not null)
         {
             TemplatedParentHelper.SetTemplatedParent(this, templatedParent);
         }
@@ -209,7 +230,7 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
     {
         ((ISetLogicalParent)this).SetParent(null);
 
-        if (AssociatedObject is StyledElement { TemplatedParent: not null })
+        if (AssociatedObject is StyledElement { TemplatedParent: not null } or TopLevel)
         {
             TemplatedParentHelper.SetTemplatedParent(this, null);
         }

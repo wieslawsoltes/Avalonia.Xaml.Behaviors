@@ -1,3 +1,4 @@
+using Avalonia.Controls;
 using Avalonia.Metadata;
 
 namespace Avalonia.Xaml.Interactivity;
@@ -25,12 +26,21 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
     {
         base.AttachBehaviorToLogicalTree();
 
-        if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
+        StyledElement? parent = null;
+        
+        if (AssociatedObject is TopLevel topLevel)
         {
-            return;
+            parent = topLevel;
         }
+        else
+        {
+            if (AssociatedObject is not StyledElement styledElement || styledElement.Parent is null)
+            {
+                return;
+            }
 
-        var parent = this;
+            parent = this;
+        }
 
         foreach (var action in Actions)
         {
