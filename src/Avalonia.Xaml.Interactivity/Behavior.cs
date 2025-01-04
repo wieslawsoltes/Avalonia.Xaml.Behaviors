@@ -97,11 +97,19 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandl
 
     void IBehaviorEventsHandler.UnloadedEventHandler() => OnUnloaded();
 
+    void IBehaviorEventsHandler.InitializedEventHandler() => OnInitializedEvent();
+
+    void IBehaviorEventsHandler.DataContextChangedEventHandler() => OnDataContextChangedEvent();
+
+    void IBehaviorEventsHandler.ResourcesChangedEventHandler() => OnResourcesChangedEvent();
+
+    void IBehaviorEventsHandler.ActualThemeVariantChangedEventHandler() => OnActualThemeVariantChangedEvent();
+
     /// <summary>
     /// Called after the <see cref="AssociatedObject"/> is attached to the visual tree.
     /// </summary>
     /// <remarks>
-    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Control"/>.
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Visual"/>.
     /// </remarks>
     protected virtual void OnAttachedToVisualTree()
     {
@@ -111,7 +119,7 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandl
     /// Called when the <see cref="AssociatedObject"/> is being detached from the visual tree.
     /// </summary>
     /// <remarks>
-    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Control"/>.
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Visual"/>.
     /// </remarks>
     protected virtual void OnDetachedFromVisualTree()
     {
@@ -121,7 +129,7 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandl
     /// Called after the <see cref="AssociatedObject"/> is attached to the logical tree.
     /// </summary>
     /// <remarks>
-    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Control"/>.
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
     /// </remarks>
     protected virtual void OnAttachedToLogicalTree()
     {
@@ -131,7 +139,7 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandl
     /// Called when the <see cref="AssociatedObject"/> is being detached from the logical tree.
     /// </summary>
     /// <remarks>
-    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Control"/>.
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
     /// </remarks>
     protected virtual void OnDetachedFromLogicalTree()
     {
@@ -154,6 +162,46 @@ public abstract class Behavior : AvaloniaObject, IBehavior, IBehaviorEventsHandl
     /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="Control"/>.
     /// </remarks>
     protected virtual void OnUnloaded()
+    {
+    }
+
+    /// <summary>
+    /// Called when the <see cref="AssociatedObject"/> is initialized.
+    /// </summary>
+    /// <remarks>
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
+    /// </remarks>
+    protected virtual void OnInitializedEvent()
+    {
+    }
+
+    /// <summary>
+    /// Called when the <see cref="AssociatedObject"/> DataContext changed.
+    /// </summary>
+    /// <remarks>
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
+    /// </remarks>
+    protected virtual void OnDataContextChangedEvent()
+    {
+    }
+
+    /// <summary>
+    /// Called when the <see cref="AssociatedObject"/> Resources changed.
+    /// </summary>
+    /// <remarks>
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
+    /// </remarks>
+    protected virtual void OnResourcesChangedEvent()
+    {
+    }
+
+    /// <summary>
+    /// Called when the <see cref="AssociatedObject"/> ActualThemeVariant changed.
+    /// </summary>
+    /// <remarks>
+    /// Invoked only when the <see cref="AssociatedObject"/> is of type <see cref="StyledElement"/>.
+    /// </remarks>
+    protected virtual void OnActualThemeVariantChangedEvent()
     {
     }
 }

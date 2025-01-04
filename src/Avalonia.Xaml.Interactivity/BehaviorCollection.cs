@@ -145,6 +145,50 @@ public class BehaviorCollection : AvaloniaList<AvaloniaObject>
         }
     }
 
+    internal void Initialized()
+    {
+        foreach (var item in this)
+        {
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
+            {
+                behaviorEventsHandler.InitializedEventHandler();
+            }
+        }
+    }
+
+    internal void DataContextChanged()
+    {
+        foreach (var item in this)
+        {
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
+            {
+                behaviorEventsHandler.DataContextChangedEventHandler();
+            }
+        }
+    }
+
+    internal void ResourcesChanged()
+    {
+        foreach (var item in this)
+        {
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
+            {
+                behaviorEventsHandler.ResourcesChangedEventHandler();
+            }
+        }
+    }
+
+    internal void ActualThemeVariantChanged()
+    {
+        foreach (var item in this)
+        {
+            if (item is IBehaviorEventsHandler behaviorEventsHandler and IBehavior { AssociatedObject: not null })
+            {
+                behaviorEventsHandler.ActualThemeVariantChangedEventHandler();
+            }
+        }
+    }
+    
     private void BehaviorCollection_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs eventArgs)
     {
         if (eventArgs.Action == NotifyCollectionChangedAction.Reset)

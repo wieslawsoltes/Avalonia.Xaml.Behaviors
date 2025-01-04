@@ -34,4 +34,24 @@ public interface IBehaviorEventsHandler
     /// Called when element is unloaded.
     /// </summary>
     void UnloadedEventHandler();
+    
+    /// <summary>
+    /// Called when element is initialized.
+    /// </summary>
+    void InitializedEventHandler();
+    
+    /// <summary>
+    /// Called when element DataContext changed.
+    /// </summary>
+    void DataContextChangedEventHandler();
+    
+    /// <summary>
+    /// Called when element Resources changed.
+    /// </summary>
+    void ResourcesChangedEventHandler();
+    
+    /// <summary>
+    /// Called when element ActualThemeVariant changed.
+    /// </summary>
+    void ActualThemeVariantChangedEventHandler();
 }

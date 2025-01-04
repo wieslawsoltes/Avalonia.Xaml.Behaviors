@@ -108,25 +108,35 @@ public class BindingTriggerBehavior : StyledElementTrigger
 
     private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
-        if (args.Sender is not BindingTriggerBehavior behavior || behavior.AssociatedObject is null)
+        if (args.Sender is not BindingTriggerBehavior behavior)
         {
             return;
         }
 
-        if (!behavior.IsEnabled)
+        behavior.Execute(parameter: args);
+    }
+
+    private void Execute(object? parameter)
+    {
+        if (AssociatedObject is null)
+        {
+            return;
+        }
+
+        if (!IsEnabled)
         {
             return;
         }
 
         // NOTE: In UWP version binding null check is not present but Avalonia throws exception as Bindings are null when first initialized.
-        var binding = behavior.BindingValue;
+        var binding = BindingValue;
         if (binding is not null)
         {
             // Some value has changed--either the binding value, reference value, or the comparison condition. Re-evaluate the equation.
-            if (ComparisonConditionTypeHelper.Compare(behavior.BindingValue, behavior.ComparisonCondition,
-                    behavior.Value))
+            if (ComparisonConditionTypeHelper.Compare(BindingValue, ComparisonCondition,
+                    Value))
             {
-                Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, args);
+                Interaction.ExecuteActions(AssociatedObject, Actions, parameter);
             }
         }
     }
