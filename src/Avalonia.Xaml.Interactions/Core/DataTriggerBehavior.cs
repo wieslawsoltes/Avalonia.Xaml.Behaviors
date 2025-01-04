@@ -68,6 +68,14 @@ public class DataTriggerBehavior : StyledElementTrigger
             new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
     }
 
+    /// <inheritdoc />
+    protected override void OnInitializedEvent()
+    {
+        base.OnInitializedEvent();
+
+        Execute(parameter: null);
+    }
+
     private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not DataTriggerBehavior behavior)
