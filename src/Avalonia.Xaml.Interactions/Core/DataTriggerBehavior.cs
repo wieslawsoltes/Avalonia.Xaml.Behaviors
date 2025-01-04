@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Avalonia.Reactive;
 using Avalonia.Xaml.Interactivity;
 
@@ -74,6 +75,11 @@ public class DataTriggerBehavior : StyledElementTrigger
             return;
         }
 
+        Execute(behavior, args);
+    }
+
+    private static void Execute(DataTriggerBehavior behavior, object? parameter)
+    {
         if (!behavior.IsEnabled)
         {
             return;
@@ -86,7 +92,7 @@ public class DataTriggerBehavior : StyledElementTrigger
             // Some value has changed--either the binding value, reference value, or the comparison condition. Re-evaluate the equation.
             if (ComparisonConditionTypeHelper.Compare(behavior.Binding, behavior.ComparisonCondition, behavior.Value))
             {
-                Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, args);
+                Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, parameter);
             }
         }
     }
