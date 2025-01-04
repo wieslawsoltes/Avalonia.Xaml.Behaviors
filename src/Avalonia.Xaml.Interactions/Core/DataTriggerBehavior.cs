@@ -70,29 +70,34 @@ public class DataTriggerBehavior : StyledElementTrigger
 
     private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
-        if (args.Sender is not DataTriggerBehavior behavior || behavior.AssociatedObject is null)
+        if (args.Sender is not DataTriggerBehavior behavior)
         {
             return;
         }
 
-        Execute(behavior, args);
+        behavior.Execute(parameter: args);
     }
 
-    private static void Execute(DataTriggerBehavior behavior, object? parameter)
-    {
-        if (!behavior.IsEnabled)
+    private void Execute(object? parameter)
+    {        
+        if (AssociatedObject is null)
+        {
+            return;
+        }
+
+        if (!IsEnabled)
         {
             return;
         }
 
         // NOTE: In UWP version binding null check is not present but Avalonia throws exception as Bindings are null when first initialized.
-        var binding = behavior.Binding;
+        var binding = Binding;
         if (binding is not null)
         {
             // Some value has changed--either the binding value, reference value, or the comparison condition. Re-evaluate the equation.
-            if (ComparisonConditionTypeHelper.Compare(behavior.Binding, behavior.ComparisonCondition, behavior.Value))
+            if (ComparisonConditionTypeHelper.Compare(Binding, ComparisonCondition, Value))
             {
-                Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, parameter);
+                Interaction.ExecuteActions(AssociatedObject, Actions, parameter);
             }
         }
     }
