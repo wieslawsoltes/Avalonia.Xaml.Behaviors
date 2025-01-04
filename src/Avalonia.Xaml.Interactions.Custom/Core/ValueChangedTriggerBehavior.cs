@@ -31,20 +31,30 @@ public class ValueChangedTriggerBehavior : StyledElementTrigger
 
     private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
-        if (args.Sender is not ValueChangedTriggerBehavior behavior || behavior.AssociatedObject is null)
+        if (args.Sender is not ValueChangedTriggerBehavior behavior)
         {
             return;
         }
 
-        if (!behavior.IsEnabled)
+        behavior.Execute(args);
+    }
+
+    private void Execute(object? parameter)
+    {
+        if (AssociatedObject is null)
         {
             return;
         }
 
-        var binding = behavior.Binding;
+        if (!IsEnabled)
+        {
+            return;
+        }
+
+        var binding = Binding;
         if (binding is not null)
         {
-            Interaction.ExecuteActions(behavior.AssociatedObject, behavior.Actions, args);
+            Interaction.ExecuteActions(AssociatedObject, Actions, parameter);
         }
     }
 }

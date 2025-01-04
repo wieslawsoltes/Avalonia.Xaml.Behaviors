@@ -106,6 +106,14 @@ public class BindingTriggerBehavior : StyledElementTrigger
         _dispose?.Dispose();
     }
 
+    /// <inheritdoc />
+    protected override void OnInitializedEvent()
+    {
+        base.OnInitializedEvent();
+
+        Execute(parameter: null);
+    }
+
     private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not BindingTriggerBehavior behavior)
