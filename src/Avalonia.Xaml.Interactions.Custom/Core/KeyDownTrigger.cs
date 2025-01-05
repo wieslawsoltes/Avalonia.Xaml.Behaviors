@@ -28,11 +28,6 @@ public class KeyDownTrigger : RoutedEventTriggerBase
     /// <summary>
     /// 
     /// </summary>
-    public bool MarkAsHandled { get; set; }
-
-    /// <summary>
-    /// 
-    /// </summary>
     /// <param name="disposables"></param>
     protected override void OnAttached(CompositeDisposable disposables)
     {

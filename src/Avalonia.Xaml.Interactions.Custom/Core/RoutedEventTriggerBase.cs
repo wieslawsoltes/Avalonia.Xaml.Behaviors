@@ -21,4 +21,9 @@ public abstract class RoutedEventTriggerBase : DisposingTrigger
         get => GetValue(EventRoutingStrategyProperty);
         set => SetValue(EventRoutingStrategyProperty, value);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool MarkAsHandled { get; set; }
 }
