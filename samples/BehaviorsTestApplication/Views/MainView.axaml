@@ -73,5 +73,8 @@
     <TabItem Header="TemplateBinding">
       <pages:TemplateBindingView />
     </TabItem>
+    <TabItem Header="Pointer Triggers">
+      <pages:PointerTriggersView DataContext="{Binding PointerTriggersViewModel}" />
+    </TabItem>
   </TabControl>
 </UserControl>
