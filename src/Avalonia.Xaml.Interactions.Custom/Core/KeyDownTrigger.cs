@@ -13,16 +13,31 @@ public class KeyDownTrigger : RoutedEventTriggerBase
     /// <summary>
     /// 
     /// </summary>
-    public static readonly StyledProperty<Key> KeyProperty =
-        AvaloniaProperty.Register<KeyDownTrigger, Key>(nameof(Key));
+    public static readonly StyledProperty<Key?> KeyProperty =
+        AvaloniaProperty.Register<KeyDownTrigger, Key?>(nameof(Key));
 
     /// <summary>
     /// 
     /// </summary>
-    public Key Key
+    public static readonly StyledProperty<KeyGesture?> GestureProperty =
+        AvaloniaProperty.Register<KeyDownTrigger, KeyGesture?>(nameof(Gesture));
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public Key? Key
     {
         get => GetValue(KeyProperty);
         set => SetValue(KeyProperty, value);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public KeyGesture? Gesture
+    {
+        get => GetValue(GestureProperty);
+        set => SetValue(GestureProperty, value);
     }
 
     /// <summary>
@@ -33,7 +48,10 @@ public class KeyDownTrigger : RoutedEventTriggerBase
     {
         if (AssociatedObject is InputElement element)
         {
-            var disposable = element.AddDisposableHandler(InputElement.KeyDownEvent, OnKeyDown, EventRoutingStrategy);
+            var disposable = element.AddDisposableHandler(
+                InputElement.KeyDownEvent, 
+                OnKeyDown, 
+                EventRoutingStrategy);
             disposables.Add(disposable);
         }
     }
@@ -45,10 +63,19 @@ public class KeyDownTrigger : RoutedEventTriggerBase
             return;
         }
 
-        if (e.Key == Key)
+        var key = Key;
+        var gesture = Gesture;
+        var haveKey = key is not null && e.Key == key;
+        var haveGesture = gesture is not null && gesture.Matches(e);
+
+        if ((key is null && gesture is null) 
+            || haveKey
+            || haveGesture)
         {
-            e.Handled = MarkAsHandled;
-            Interaction.ExecuteActions(AssociatedObject, Actions, null);
+            return;
         }
+
+        e.Handled = MarkAsHandled;
+        Interaction.ExecuteActions(AssociatedObject, Actions, e);
     }
 }
