@@ -31,13 +31,27 @@ public abstract class RoutedEventTriggerBase<T> : RoutedEventTriggerBase where T
         }
     }
 
-    private void Handler(object? sender, T e)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected virtual void Handler(object? sender, T e)
     {
         if (!IsEnabled)
         {
             return;
         }
 
+        Execute(e);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="e"></param>
+    protected void Execute(T e)
+    {
         e.Handled = MarkAsHandled;
         Interaction.ExecuteActions(AssociatedObject, Actions, e);
     }
