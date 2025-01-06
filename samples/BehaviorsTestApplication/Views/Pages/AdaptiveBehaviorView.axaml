@@ -116,7 +116,7 @@
         <TextBlock Text=" Classes: " />
         <TextBlock>
           <TextBlock.Text>
-            <MultiBinding Converter="{x:Static converters:ClassesToStringConverter.Instance}">
+            <MultiBinding Converter="{ClassesToStringConverter}">
               <Binding ElementName="ResponsiveStackPanel" Path="Classes.Count" />
               <Binding ElementName="ResponsiveStackPanel" Path="Classes" />
             </MultiBinding>
