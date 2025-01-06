@@ -1,15 +1,17 @@
-using System.Reactive.Disposables;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
 
 /// <summary>
 /// 
 /// </summary>
-public class KeyDownTrigger : RoutedEventTriggerBase
+public class KeyDownTrigger : RoutedEventTriggerBase<KeyEventArgs>
 {
+    /// <inheritdoc />
+    protected override RoutedEvent<KeyEventArgs> RoutedEvent 
+        => InputElement.KeyDownEvent;
+
     /// <summary>
     /// 
     /// </summary>
@@ -40,42 +42,26 @@ public class KeyDownTrigger : RoutedEventTriggerBase
         set => SetValue(GestureProperty, value);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="disposables"></param>
-    protected override void OnAttached(CompositeDisposable disposables)
-    {
-        if (AssociatedObject is InputElement element)
-        {
-            var disposable = element.AddDisposableHandler(
-                InputElement.KeyDownEvent, 
-                OnKeyDown, 
-                EventRoutingStrategy);
-            disposables.Add(disposable);
-        }
-    }
-
-    private void OnKeyDown(object? sender, KeyEventArgs e)
+    /// <inheritdoc />
+    protected override void Handler(object? sender, KeyEventArgs e)
     {
         if (!IsEnabled)
         {
             return;
         }
 
+        var isKeySet = IsSet(KeyProperty);
+        var isGestureSet = IsSet(GestureProperty);
         var key = Key;
         var gesture = Gesture;
-        var haveKey = key is not null && e.Key == key;
-        var haveGesture = gesture is not null && gesture.Matches(e);
+        var haveKey = key is not null && isKeySet && e.Key == key;
+        var haveGesture = gesture is not null && isGestureSet && gesture.Matches(e);
 
-        if ((key is null && gesture is null) 
+        if ((!isKeySet && !isGestureSet) 
             || haveKey
             || haveGesture)
         {
-            return;
+            Execute(e);
         }
-
-        e.Handled = MarkAsHandled;
-        Interaction.ExecuteActions(AssociatedObject, Actions, e);
     }
 }
