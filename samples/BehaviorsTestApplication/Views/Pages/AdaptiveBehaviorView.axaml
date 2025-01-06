@@ -53,13 +53,13 @@
         <BehaviorCollectionTemplate>
           <BehaviorCollection>
             <AdaptiveBehavior SourceControl="{Binding $parent[TopLevel]}">
-            <AdaptiveClassSetter MinWidth="0" MinWidthOperator="GreaterThanOrEqual" MaxWidth="500" MaxWidthOperator="LessThan" ClassName="small" />
-            <AdaptiveClassSetter MinWidth="500" MinWidthOperator="GreaterThanOrEqual" MaxWidth="700" MaxWidthOperator="LessThan" ClassName="medium" />
-            <AdaptiveClassSetter MinWidth="700" MinWidthOperator="GreaterThanOrEqual" MaxWidth="900" MaxWidthOperator="LessThan" ClassName="large" />
-            <AdaptiveClassSetter MinWidth="900" MinWidthOperator="GreaterThanOrEqual" MaxWidth="Infinity" MaxWidthOperator="LessThan" ClassName="wide" />
-            <AdaptiveClassSetter MinHeight="0" MinWidthOperator="GreaterThanOrEqual" MaxHeight="600" MaxWidthOperator="LessThan" ClassName=":short" IsPseudoClass="True" />
-            <AdaptiveClassSetter MinHeight="600" MinWidthOperator="GreaterThanOrEqual" MaxHeight="Infinity" MaxWidthOperator="LessThan" ClassName=":tall" IsPseudoClass="True" />
-            <AdaptiveClassSetter MinWidth="1280" MinHeight="720" ClassName=":hd-ready" IsPseudoClass="True" />
+              <AdaptiveClassSetter MinWidth="0" MinWidthOperator="GreaterThanOrEqual" MaxWidth="500" MaxWidthOperator="LessThan" ClassName="small" />
+              <AdaptiveClassSetter MinWidth="500" MinWidthOperator="GreaterThanOrEqual" MaxWidth="700" MaxWidthOperator="LessThan" ClassName="medium" />
+              <AdaptiveClassSetter MinWidth="700" MinWidthOperator="GreaterThanOrEqual" MaxWidth="900" MaxWidthOperator="LessThan" ClassName="large" />
+              <AdaptiveClassSetter MinWidth="900" MinWidthOperator="GreaterThanOrEqual" MaxWidth="Infinity" MaxWidthOperator="LessThan" ClassName="wide" />
+              <AdaptiveClassSetter MinHeight="0" MinWidthOperator="GreaterThanOrEqual" MaxHeight="600" MaxWidthOperator="LessThan" ClassName=":short" IsPseudoClass="True" />
+              <AdaptiveClassSetter MinHeight="600" MinWidthOperator="GreaterThanOrEqual" MaxHeight="Infinity" MaxWidthOperator="LessThan" ClassName=":tall" IsPseudoClass="True" />
+              <AdaptiveClassSetter MinWidth="1280" MinHeight="720" ClassName=":hd-ready" IsPseudoClass="True" />
             </AdaptiveBehavior>
           </BehaviorCollection>
         </BehaviorCollectionTemplate>
