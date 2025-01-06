@@ -10,6 +10,11 @@ public abstract class DataContextChangedTrigger : StyledElementTrigger<StyledEle
     /// <inheritdoc />
     protected override void OnDataContextChangedEvent()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interaction.ExecuteActions(AssociatedObject, Actions, parameter: null);
     }
 }

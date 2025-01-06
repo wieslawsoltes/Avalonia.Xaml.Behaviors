@@ -10,6 +10,11 @@ public abstract class DetachedFromLogicalTreeTrigger : StyledElementTrigger<Styl
     /// <inheritdoc />
     protected override void OnDetachedFromLogicalTree()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interaction.ExecuteActions(AssociatedObject, Actions, parameter: null);
     }
 }

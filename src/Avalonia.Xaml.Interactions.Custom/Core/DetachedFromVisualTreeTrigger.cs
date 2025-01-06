@@ -10,6 +10,11 @@ public abstract class DetachedFromVisualTreeTrigger : StyledElementTrigger<Visua
     /// <inheritdoc />
     protected override void OnDetachedFromVisualTree()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interaction.ExecuteActions(AssociatedObject, Actions, parameter: null);
     }
 }

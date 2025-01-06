@@ -10,6 +10,11 @@ public abstract class ActualThemeVariantChangedTrigger : StyledElementTrigger<St
     /// <inheritdoc />
     protected override void OnActualThemeVariantChangedEvent()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interaction.ExecuteActions(AssociatedObject, Actions, parameter: null);
     }
 }

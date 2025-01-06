@@ -10,6 +10,11 @@ public abstract class ResourcesChangedTrigger : StyledElementTrigger<StyledEleme
     /// <inheritdoc />
     protected override void OnResourcesChangedEvent()
     {
+        if (!IsEnabled)
+        {
+            return;
+        }
+
         Interaction.ExecuteActions(AssociatedObject, Actions, parameter: null);
     }
 }
