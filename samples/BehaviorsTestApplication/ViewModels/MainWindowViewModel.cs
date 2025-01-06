@@ -10,27 +10,10 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     private int _value;
 
-    [Reactive]
-    public partial int Count { get; set; }
-
-    [Reactive]
-    public partial double Position { get; set; }
-
-    [Reactive]
-    public partial ObservableCollection<ItemViewModel>? Items { get; set; }
-
-    public IObservable<int> Values { get; }
-
-    public ICommand InitializeCommand { get; set; }
-
-    public ICommand MoveLeftCommand { get; set; }
-
-    public ICommand MoveRightCommand { get; set; }
-
-    public ICommand ResetMoveCommand { get; set; }
-
     public MainWindowViewModel()
     {
+        PointerTriggersViewModel = new PointerTriggersViewModel();
+        
         Count = 0;
         Position = 100.0;
         InitializeCommand = ReactiveCommand.Create(Initialize);
@@ -92,6 +75,28 @@ public partial class MainWindowViewModel : ViewModelBase
 
         Values = Observable.Interval(TimeSpan.FromSeconds(1)).Select(_ => _value++);
     }
+
+    [Reactive]
+    public partial PointerTriggersViewModel PointerTriggersViewModel { get; set; }
+
+    [Reactive]
+    public partial int Count { get; set; }
+
+    [Reactive]
+    public partial double Position { get; set; }
+
+    [Reactive]
+    public partial ObservableCollection<ItemViewModel>? Items { get; set; }
+
+    public IObservable<int> Values { get; }
+
+    public ICommand InitializeCommand { get; set; }
+
+    public ICommand MoveLeftCommand { get; set; }
+
+    public ICommand MoveRightCommand { get; set; }
+
+    public ICommand ResetMoveCommand { get; set; }
 
     private void Initialize()
     {
