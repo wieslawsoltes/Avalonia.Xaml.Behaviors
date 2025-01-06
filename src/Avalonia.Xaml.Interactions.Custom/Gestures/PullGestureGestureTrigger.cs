@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class PullGestureGestureTrigger : RoutedEventTriggerBase<PullGestureEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<PullGestureEventArgs> RoutedEvent 
+    protected override RoutedEvent<PullGestureEventArgs> RoutedEvent
         => Gestures.PullGestureEvent;
+
+    static PullGestureGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<PullGestureGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

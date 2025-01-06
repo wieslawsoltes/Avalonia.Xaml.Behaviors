@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class PointerTouchPadGestureMagnifyGestureTrigger : RoutedEventTriggerBase<PointerDeltaEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<PointerDeltaEventArgs> RoutedEvent 
+    protected override RoutedEvent<PointerDeltaEventArgs> RoutedEvent
         => Gestures.PointerTouchPadGestureMagnifyEvent;
+
+    static PointerTouchPadGestureMagnifyGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<PointerTouchPadGestureMagnifyGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

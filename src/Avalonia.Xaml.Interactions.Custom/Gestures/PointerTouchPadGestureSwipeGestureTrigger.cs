@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class PointerTouchPadGestureSwipeGestureTrigger : RoutedEventTriggerBase<PointerDeltaEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<PointerDeltaEventArgs> RoutedEvent 
+    protected override RoutedEvent<PointerDeltaEventArgs> RoutedEvent
         => Gestures.PointerTouchPadGestureSwipeEvent;
+
+    static PointerTouchPadGestureSwipeGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<PointerTouchPadGestureSwipeGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

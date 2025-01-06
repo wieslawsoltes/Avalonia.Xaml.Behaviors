@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class ScrollGestureEndedGestureTrigger : RoutedEventTriggerBase<ScrollGestureEndedEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<ScrollGestureEndedEventArgs> RoutedEvent 
+    protected override RoutedEvent<ScrollGestureEndedEventArgs> RoutedEvent
         => Gestures.ScrollGestureEndedEvent;
+
+    static ScrollGestureEndedGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<ScrollGestureEndedGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

@@ -11,4 +11,11 @@ public class HoldingGestureTrigger : RoutedEventTriggerBase<HoldingRoutedEventAr
     /// <inheritdoc />
     protected override RoutedEvent<HoldingRoutedEventArgs> RoutedEvent 
         => Gestures.HoldingEvent;
+ 
+    static HoldingGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<HoldingGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class RightTappedGestureTrigger : RoutedEventTriggerBase<TappedEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<TappedEventArgs> RoutedEvent 
+    protected override RoutedEvent<TappedEventArgs> RoutedEvent
         => Gestures.RightTappedEvent;
+
+    static RightTappedGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<RightTappedGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

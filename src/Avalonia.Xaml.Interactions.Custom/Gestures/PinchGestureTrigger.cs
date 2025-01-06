@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class PinchGestureTrigger : RoutedEventTriggerBase<PinchEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<PinchEventArgs> RoutedEvent 
+    protected override RoutedEvent<PinchEventArgs> RoutedEvent
         => Gestures.PinchEvent;
+
+    static PinchGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<PinchGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

@@ -9,6 +9,13 @@ namespace Avalonia.Xaml.Interactions.Custom;
 public class PullGestureEndedGestureTrigger : RoutedEventTriggerBase<PullGestureEndedEventArgs>
 {
     /// <inheritdoc />
-    protected override RoutedEvent<PullGestureEndedEventArgs> RoutedEvent 
+    protected override RoutedEvent<PullGestureEndedEventArgs> RoutedEvent
         => Gestures.PullGestureEndedEvent;
+
+    static PullGestureEndedGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<PullGestureEndedGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }

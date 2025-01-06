@@ -11,4 +11,11 @@ public class DoubleTappedGestureTrigger : RoutedEventTriggerBase<TappedEventArgs
     /// <inheritdoc />
     protected override RoutedEvent<TappedEventArgs> RoutedEvent 
         => Gestures.DoubleTappedEvent;
+ 
+    static DoubleTappedGestureTrigger()
+    {
+        EventRoutingStrategyProperty.OverrideMetadata<DoubleTappedGestureTrigger>(
+            new StyledPropertyMetadata<RoutingStrategies>(
+                defaultValue: RoutingStrategies.Bubble));
+    }
 }
