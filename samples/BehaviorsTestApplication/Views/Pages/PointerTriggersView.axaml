@@ -15,16 +15,16 @@
       <PointerPressedTrigger EventRoutingStrategy="Bubble">
         <CapturePointerAction />
         <InvokeCommandAction Command="{Binding PointerPressedCommand}"
-                             InputConverter="{x:Static PointerEventArgsConverter.Instance}" />
+                             InputConverter="{PointerEventArgsConverter}" />
       </PointerPressedTrigger>
       <PointerReleasedTrigger EventRoutingStrategy="Bubble">
         <ReleasePointerCaptureAction />
         <InvokeCommandAction Command="{Binding PointerReleasedCommand}"
-                             InputConverter="{x:Static PointerEventArgsConverter.Instance}" />
+                             InputConverter="{PointerEventArgsConverter}" />
       </PointerReleasedTrigger>
       <PointerMovedTrigger EventRoutingStrategy="Bubble">
         <InvokeCommandAction Command="{Binding PointerMovedCommand}"
-                             InputConverter="{x:Static PointerEventArgsConverter.Instance}" />
+                             InputConverter="{PointerEventArgsConverter}" />
       </PointerMovedTrigger>
     </Interaction.Behaviors>
   </Canvas>

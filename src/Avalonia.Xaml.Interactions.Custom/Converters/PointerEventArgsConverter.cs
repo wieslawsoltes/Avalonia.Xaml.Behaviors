@@ -75,4 +75,11 @@ public class PointerEventArgsConverter : IValueConverter
     {
         return AvaloniaProperty.UnsetValue;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="serviceProvider"></param>
+    /// <returns></returns>
+    public IValueConverter ProvideValue(IServiceProvider serviceProvider) => Instance;
 }
