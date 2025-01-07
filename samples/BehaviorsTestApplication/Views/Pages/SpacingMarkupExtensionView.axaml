@@ -1,0 +1,12 @@
+﻿<UserControl 
+  x:Class="BehaviorsTestApplication.Views.Pages.SpacingMarkupExtensionView"
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <StackPanel Spacing="{Spacing Small}">
+    <TextBox Text="Text 1" />
+    <TextBox Text="Text 2" />
+    <TextBox Text="Text 3" />
+  </StackPanel>
+
+</UserControl>
