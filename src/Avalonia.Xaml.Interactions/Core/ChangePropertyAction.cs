@@ -118,6 +118,16 @@ public class ChangePropertyAction : Avalonia.Xaml.Interactivity.StyledElementAct
         set => SetValue(TargetObjectProperty, value);
     }
 
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+
+        if (change.Property == ValueProperty)
+        {
+            Console.WriteLine($"Value={Value}");
+        }
+    }
+
     /// <summary>
     /// Executes the action.
     /// </summary>

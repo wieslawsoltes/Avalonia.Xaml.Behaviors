@@ -1,3 +1,4 @@
+using Avalonia.Animation;
 using Avalonia.Controls;
 
 namespace Avalonia.Xaml.Interactivity;
@@ -5,6 +6,7 @@ namespace Avalonia.Xaml.Interactivity;
 /// <summary>
 /// A base class for action that calls a method on a specified object when invoked.
 /// </summary>
+// REPRO: Change StyledElement to Animatable or AvaloniaObject
 public abstract class StyledElementAction : StyledElement, IAction
 {
     /// <summary>
@@ -35,23 +37,23 @@ public abstract class StyledElementAction : StyledElement, IAction
     internal void AttachActionToLogicalTree(StyledElement parent)
     {
         // Required for $parent binding in XAML
-        ((ISetLogicalParent)this).SetParent(null);
-        ((ISetLogicalParent)this).SetParent(parent);
+        //((ISetLogicalParent)this).SetParent(null);
+        //((ISetLogicalParent)this).SetParent(parent);
 
         // Required for TemplateBinding in XAML
         if (parent.TemplatedParent is { } templatedParent)
         {
-            TemplatedParentHelper.SetTemplatedParent(this, templatedParent);
+            //TemplatedParentHelper.SetTemplatedParent(this, templatedParent);
         }
     }
 
     internal void DetachActionFromLogicalTree(StyledElement parent)
     {
-        ((ISetLogicalParent)this).SetParent(null);
+        //((ISetLogicalParent)this).SetParent(null);
 
         if (parent is { TemplatedParent: not null })
         {
-            TemplatedParentHelper.SetTemplatedParent(this, null);
+            //TemplatedParentHelper.SetTemplatedParent(this, null);
         }
     }
 }

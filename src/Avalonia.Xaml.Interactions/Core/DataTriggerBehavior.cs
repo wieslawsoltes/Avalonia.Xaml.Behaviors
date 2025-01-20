@@ -5,6 +5,28 @@ using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
 
+public class CustomStyledElement : StyledElement
+{
+    public static readonly StyledProperty<object?> ValueProperty =
+        AvaloniaProperty.Register<CustomStyledElement, object?>(nameof(Value));
+
+    public object? Value
+    {
+        get => GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
+    }
+
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+
+        if (change.Property == ValueProperty)
+        {
+            Console.WriteLine($"Value={Value}");
+        }
+    }
+}
+
 /// <summary>
 /// A behavior that performs actions when the bound data meets a specified condition.
 /// </summary>
@@ -58,14 +80,36 @@ public class DataTriggerBehavior : StyledElementTrigger
 
     static DataTriggerBehavior()
     {
-        BindingProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
+        //BindingProperty.Changed.Subscribe(
+        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
 
-        ComparisonConditionProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<ComparisonConditionType>>(OnValueChanged));
+        //ComparisonConditionProperty.Changed.Subscribe(
+        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<ComparisonConditionType>>(OnValueChanged));
 
-        ValueProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
+        //ValueProperty.Changed.Subscribe(
+        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
+    }
+
+
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+                
+        if (change.Property == BindingProperty)
+        {
+            OnValueChanged(change);
+        }
+
+        if (change.Property == ComparisonConditionProperty)
+        {
+            OnValueChanged(change);
+        }
+
+        if (change.Property == ValueProperty)
+        {
+            OnValueChanged(change);
+        }
     }
 
     /// <inheritdoc />
@@ -76,7 +120,7 @@ public class DataTriggerBehavior : StyledElementTrigger
         Execute(parameter: null);
     }
 
-    private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
+    private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not DataTriggerBehavior behavior)
         {

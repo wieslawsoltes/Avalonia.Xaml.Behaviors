@@ -13,68 +13,11 @@
     </Style>
   </UserControl.Styles>
   <TabControl Classes="sidebar">
-    <TabItem Header="CallMethodAction">
-      <pages:CallMethodActionView />
-    </TabItem>
-    <TabItem Header="ChangePropertyAction">
-      <pages:ChangePropertyActionView />
-    </TabItem>
+
     <TabItem Header="DataTriggerBehavior">
       <pages:DataTriggerBehaviorView />
     </TabItem>
-    <TabItem Header="BindingTriggerBehavior">
-      <pages:BindingTriggerBehaviorView />
-    </TabItem>
-    <TabItem Header="ValueChangedTriggerBehavior">
-      <pages:ValueChangedTriggerBehaviorView />
-    </TabItem>
-    <TabItem Header="EventTriggerBehavior">
-      <pages:EventTriggerBehaviorView />
-    </TabItem>
-    <TabItem Header="InvokeCommandAction">
-      <pages:InvokeCommandActionView />
-    </TabItem>
-    <TabItem Header="RoutedEventTriggerBehavior">
-      <pages:RoutedEventTriggerBehaviorView />
-    </TabItem>
-    <TabItem Header="ChangeAvaloniaPropertyAction">
-      <pages:ChangeAvaloniaPropertyActionView />
-    </TabItem>
-    <TabItem Header="Custom Action">
-      <pages:CustomActionView />
-    </TabItem>
-    <TabItem Header="Custom Behavior">
-      <pages:CustomBehaviorView />
-    </TabItem>
-    <TabItem Header="ButtonClickEventTriggerBehavior">
-      <pages:ButtonClickEventTriggerBehaviorView />
-    </TabItem>
-    <TabItem Header="Advanced Behavior">
-      <pages:AdvancedView />
-    </TabItem>
-    <TabItem Header="Add/RemoveClassAction">
-      <pages:AddRemoveClassActionView />
-    </TabItem>
-    <TabItem Header="AdaptiveBehavior">
-      <pages:AdaptiveBehaviorView />
-    </TabItem>
-    <TabItem Header="EditableListBox">
-      <pages:EditableListBoxView />
-    </TabItem>
-    <TabItem Header="EditableTree">
-      <pages:EditableTreeViewView />
-    </TabItem>
-    <TabItem Header="Sliding Animation">
-      <pages:SlidingAnimationView />
-    </TabItem>
-    <TabItem Header="BehaviorCollectionTemplate">
-      <pages:BehaviorCollectionTemplateView />
-    </TabItem>
-    <TabItem Header="TemplateBinding">
-      <pages:TemplateBindingView />
-    </TabItem>
-    <TabItem Header="Pointer Triggers">
-      <pages:PointerTriggersView DataContext="{Binding PointerTriggersViewModel}" />
-    </TabItem>
+
+   
   </TabControl>
 </UserControl>

@@ -74,6 +74,8 @@ public partial class MainWindowViewModel : ViewModelBase
         ];
 
         Values = Observable.Interval(TimeSpan.FromSeconds(1)).Select(_ => _value++);
+
+        MyString = "";
     }
 
     [Reactive]
@@ -88,6 +90,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [Reactive]
     public partial ObservableCollection<ItemViewModel>? Items { get; set; }
 
+
+    [Reactive] internal partial string MyString { get; set; }
+    
     public IObservable<int> Values { get; }
 
     public ICommand InitializeCommand { get; set; }
