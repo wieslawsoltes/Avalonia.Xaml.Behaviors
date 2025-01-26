@@ -81,10 +81,7 @@ public class DataTriggerBehavior : StyledElementTrigger
     {
         base.OnInitializedEvent();
 
-        Dispatcher.UIThread.Post(() =>
-        {
-            Execute(parameter: null);
-        });
+        Execute(parameter: null);
     }
 
     private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
