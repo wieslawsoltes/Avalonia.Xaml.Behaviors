@@ -9,26 +9,39 @@
   <Design.DataContext>
     <vm:MainWindowViewModel />
   </Design.DataContext>
-  <Grid RowDefinitions="Auto,*">
-    <TextBox Grid.Row="0" Text="{Binding MyString}" />
-    <Border Grid.Row="1" Background="Black" CornerRadius="5">
+  <Grid RowDefinitions="*,Auto">
+    <Rectangle Name="DataTriggerRectangle" 
+               Grid.Row="0" Margin="5"
+               Fill="{DynamicResource BlueBrush}"
+               Stroke="{DynamicResource GrayBrush}"
+               StrokeThickness="5">
       <Interaction.Behaviors>
-        <DataTriggerBehavior Binding="{Binding MyString}" ComparisonCondition="Equal" Value="">
-          <ChangePropertyAction PropertyName="IsVisible" Value="False" />
+        <DataTriggerBehavior Binding="{Binding #Slider.Value}" 
+                                ComparisonCondition="GreaterThan" 
+                                Value="50">
+          <ChangePropertyAction TargetObject="DataTriggerRectangle" 
+                                   PropertyName="Fill"
+                                   Value="{DynamicResource YellowBrush}" />
         </DataTriggerBehavior>
-        <DataTriggerBehavior Binding="{Binding MyString}" ComparisonCondition="NotEqual" Value="">
-          <ChangePropertyAction PropertyName="IsVisible" Value="True" />
+        <DataTriggerBehavior Binding="{Binding #Slider.Value}" 
+                                ComparisonCondition="LessThanOrEqual" 
+                                Value="50">
+          <ChangePropertyAction TargetObject="DataTriggerRectangle" 
+                                   PropertyName="Fill"
+                                   Value="{DynamicResource BlueBrush}" />
         </DataTriggerBehavior>
       </Interaction.Behaviors>
-      <StackPanel>
-        <TextBlock FontSize="25" Foreground="White">
-          <Interaction.Behaviors>
-            <DataTriggerBehavior Binding="{Binding MyString}" ComparisonCondition="NotEqual" Value="">
-              <ChangePropertyAction PropertyName="Text" Value="{Binding MyString}" />
-            </DataTriggerBehavior>
-          </Interaction.Behaviors>
-        </TextBlock>
-      </StackPanel>
-    </Border>
+    </Rectangle>
+    <StackPanel Grid.Row="1" 
+                Margin="5,0,5,5" 
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+      <TextBlock Text="{Binding #Slider.Value}" 
+                 VerticalAlignment="Center" 
+                 Width="50"
+                 Foreground="{DynamicResource GrayBrush}" />
+      <Slider Name="Slider" Width="400" IsSnapToTickEnabled="True" TickFrequency="1" />
+    </StackPanel>
   </Grid>
 </UserControl>
