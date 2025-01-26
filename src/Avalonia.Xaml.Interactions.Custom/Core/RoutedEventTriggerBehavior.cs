@@ -136,6 +136,11 @@ public class RoutedEventTriggerBehavior : StyledElementTrigger<Interactive>
 
     private void Handler(object? sender, RoutedEventArgs e)
     {
+        Execute(e);
+    }
+
+    private void Execute(object? parameter)
+    {
         if (!IsEnabled)
         {
             return;
@@ -144,7 +149,7 @@ public class RoutedEventTriggerBehavior : StyledElementTrigger<Interactive>
         var interactive = ComputeResolvedSourceInteractive();
         if (interactive is not null)
         {
-            Interaction.ExecuteActions(interactive, Actions, e);
+            Interaction.ExecuteActions(interactive, Actions, parameter);
         }
     }
 }

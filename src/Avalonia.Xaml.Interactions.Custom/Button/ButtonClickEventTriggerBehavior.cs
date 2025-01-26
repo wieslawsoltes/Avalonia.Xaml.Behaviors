@@ -51,6 +51,11 @@ public class ButtonClickEventTriggerBehavior : StyledElementTrigger<Button>
 
     private void AssociatedObject_OnClick(object? sender, RoutedEventArgs e)
     {
+        Execute(e);
+    }
+
+    private void Execute(object? parameter)
+    {
         if (!IsEnabled)
         {
             return;
@@ -58,7 +63,7 @@ public class ButtonClickEventTriggerBehavior : StyledElementTrigger<Button>
 
         if (AssociatedObject is not null && KeyModifiers == _savedKeyModifiers)
         {
-            Interaction.ExecuteActions(AssociatedObject, Actions, e);
+            Interaction.ExecuteActions(AssociatedObject, Actions, parameter);
         }
     }
 
