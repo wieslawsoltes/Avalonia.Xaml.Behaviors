@@ -13,9 +13,9 @@
     </EventTriggerBehavior>
     -->
     <!-- TopLevel attached to visual tree special case -->
-    <!-- <RoutedEventTriggerBehavior RoutedEvent="{x:Static Control.LoadedEvent}"> -->
-    <!--   <InvokeCommandAction Command="{Binding InitializeCommand, Mode=OneTime}" /> -->
-    <!-- </RoutedEventTriggerBehavior> -->
+    <RoutedEventTriggerBehavior RoutedEvent="{x:Static Control.LoadedEvent}">
+      <InvokeCommandAction Command="{Binding InitializeCommand, Mode=OneTime}" />
+    </RoutedEventTriggerBehavior>
   </Interaction.Behaviors>
   <views:MainView />
 </Window>
