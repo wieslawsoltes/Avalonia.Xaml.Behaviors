@@ -90,9 +90,10 @@ public partial class MainWindowViewModel : ViewModelBase
     [Reactive]
     public partial ObservableCollection<ItemViewModel>? Items { get; set; }
 
-
     [Reactive] internal partial string MyString { get; set; }
     
+    [Reactive] public partial bool FocusFlag { get; set; }
+
     public IObservable<int> Values { get; }
 
     public ICommand InitializeCommand { get; set; }
