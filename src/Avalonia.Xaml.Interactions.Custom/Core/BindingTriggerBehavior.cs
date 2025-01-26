@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Data;
-using Avalonia.Reactive;
 using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
@@ -69,23 +68,18 @@ public class BindingTriggerBehavior : StyledElementTrigger
         get => GetValue(BindingValueProperty);
         set => SetValue(BindingValueProperty, value);
     }
-    
-    static BindingTriggerBehavior()
-    {
-        ComparisonConditionProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<ComparisonConditionType>>(OnValueChanged));
-
-        ValueProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
-
-        BindingValueProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
-    }
 
     /// <inheritdoc />
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
+        
+        if (change.Property == ComparisonConditionProperty ||
+            change.Property == ValueProperty ||
+            change.Property == BindingValueProperty)
+        {
+            OnValueChanged(change);
+        }
 
         if (change.Property == BindingProperty)
         {
@@ -115,7 +109,7 @@ public class BindingTriggerBehavior : StyledElementTrigger
         Execute(parameter: null);
     }
 
-    private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
+    private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not BindingTriggerBehavior behavior)
         {

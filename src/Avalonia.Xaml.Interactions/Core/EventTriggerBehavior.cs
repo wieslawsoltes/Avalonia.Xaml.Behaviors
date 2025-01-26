@@ -52,17 +52,23 @@ public class EventTriggerBehavior : StyledElementTrigger
         set => SetValue(SourceObjectProperty, value);
     }
 
-    static EventTriggerBehavior()
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
-        EventNameProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string?>>(EventNameChanged));
-
-        SourceObjectProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(SourceObjectChanged));
+        base.OnPropertyChanged(change);
+        
+        if (change.Property == EventNameProperty)
+        {
+            EventNameChanged(change);
+        }
+        else if (change.Property == SourceObjectProperty)
+        {
+            SourceObjectChanged(change);
+        }
     }
 
     [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-    private static void EventNameChanged(AvaloniaPropertyChangedEventArgs<string?> e)
+    private void EventNameChanged(AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Sender is not EventTriggerBehavior behavior)
         {
@@ -74,8 +80,8 @@ public class EventTriggerBehavior : StyledElementTrigger
             return;
         }
 
-        var oldEventName = e.OldValue.GetValueOrDefault();
-        var newEventName = e.NewValue.GetValueOrDefault();
+        var oldEventName = e.GetOldValue<string?>();
+        var newEventName = e.GetNewValue<string?>();
 
         if (oldEventName is not null)
         {
@@ -88,7 +94,7 @@ public class EventTriggerBehavior : StyledElementTrigger
         }
     }
 
-    private static void SourceObjectChanged(AvaloniaPropertyChangedEventArgs<object?> e)
+    private void SourceObjectChanged(AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Sender is EventTriggerBehavior behavior)
         {
