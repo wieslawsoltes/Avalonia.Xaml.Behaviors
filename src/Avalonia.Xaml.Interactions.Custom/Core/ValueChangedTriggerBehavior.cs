@@ -42,7 +42,10 @@ public class ValueChangedTriggerBehavior : StyledElementTrigger
             return;
         }
 
-        behavior.Execute(args);
+        Dispatcher.UIThread.Post(() =>
+        {
+            behavior.Execute(args);
+        });
     }
 
     private void Execute(object? parameter)
