@@ -55,19 +55,6 @@ public class DataTriggerBehavior : StyledElementTrigger
         set => SetValue(ValueProperty, value);
     }
 
-    static DataTriggerBehavior()
-    {
-        //BindingProperty.Changed.Subscribe(
-        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
-
-        //ComparisonConditionProperty.Changed.Subscribe(
-        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<ComparisonConditionType>>(OnValueChanged));
-
-        //ValueProperty.Changed.Subscribe(
-        //    new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
-    }
-
-
     /// <inheritdoc />
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
