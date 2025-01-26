@@ -35,6 +35,11 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// <returns>Returns the result of the action.</returns>
     public abstract object? Execute(object? sender, object? parameter);
 
+    internal void Initialize()
+    {
+        InitializeIfNeeded();
+    }
+    
     internal void AttachActionToLogicalTree(StyledElement parent)
     {
         // Required for $parent binding in XAML
