@@ -1,6 +1,5 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Avalonia.Reactive;
+﻿using System.Diagnostics.CodeAnalysis;
+using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
@@ -56,16 +55,25 @@ public class DataTriggerBehavior : StyledElementTrigger
         set => SetValue(ValueProperty, value);
     }
 
-    static DataTriggerBehavior()
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
-        BindingProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
+        base.OnPropertyChanged(change);
+                
+        if (change.Property == BindingProperty)
+        {
+            OnValueChanged(change);
+        }
 
-        ComparisonConditionProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<ComparisonConditionType>>(OnValueChanged));
+        if (change.Property == ComparisonConditionProperty)
+        {
+            OnValueChanged(change);
+        }
 
-        ValueProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
+        if (change.Property == ValueProperty)
+        {
+            OnValueChanged(change);
+        }
     }
 
     /// <inheritdoc />
@@ -76,14 +84,17 @@ public class DataTriggerBehavior : StyledElementTrigger
         Execute(parameter: null);
     }
 
-    private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
+    private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not DataTriggerBehavior behavior)
         {
             return;
         }
 
-        behavior.Execute(parameter: args);
+        Dispatcher.UIThread.Post(() =>
+        {
+            behavior.Execute(parameter: args);
+        });
     }
 
     private void Execute(object? parameter)

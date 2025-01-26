@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Reactive;
 
 namespace Avalonia.Xaml.Interactions.Core;
 
@@ -51,34 +50,41 @@ public class CallMethodAction : Avalonia.Xaml.Interactivity.StyledElementAction
         set => SetValue(TargetObjectProperty, value);
     }
 
-    static CallMethodAction()
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
-        MethodNameProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<string?>>(MethodNameChanged));
+        base.OnPropertyChanged(change);
+                
+        if (change.Property == MethodNameProperty)
+        {
+            MethodNameChanged(change);
+        }
 
-        TargetObjectProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(TargetObjectChanged));
+        if (change.Property == TargetObjectProperty)
+        {
+            TargetObjectChanged(change);
+        }
     }
 
-    private static void MethodNameChanged(AvaloniaPropertyChangedEventArgs<string?> e)
+    private void MethodNameChanged(AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Sender is not CallMethodAction callMethodAction)
         {
             return;
         }
-        
+
         callMethodAction.UpdateMethodDescriptors();
     }
 
     [RequiresUnreferencedCode("This functionality is not compatible with trimming.")]
-    private static void TargetObjectChanged(AvaloniaPropertyChangedEventArgs<object?> e)
+    private void TargetObjectChanged(AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Sender is not CallMethodAction callMethodAction)
         {
             return;
         }
 
-        var newValue = e.NewValue.GetValueOrDefault();
+        var newValue = e.GetNewValue<object?>();
         if (newValue is not null)
         {
             var newType = newValue.GetType();

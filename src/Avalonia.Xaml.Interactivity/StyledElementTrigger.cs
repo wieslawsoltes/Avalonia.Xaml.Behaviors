@@ -22,6 +22,19 @@ public abstract class StyledElementTrigger : StyledElementBehavior, ITrigger
     [Content]
     public ActionCollection Actions => _actions ??= [];
 
+    internal override void Initialize()
+    {
+        base.Initialize();
+        
+        foreach (var action in Actions)
+        {
+            if (action is StyledElementAction styledElementAction)
+            {
+                styledElementAction.Initialize();
+            }
+        }
+    }
+
     internal override void AttachBehaviorToLogicalTree()
     {
         base.AttachBehaviorToLogicalTree();

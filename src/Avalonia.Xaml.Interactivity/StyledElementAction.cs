@@ -11,7 +11,8 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// Identifies the <seealso cref="IsEnabled"/> avalonia property.
     /// </summary>
     public static readonly StyledProperty<bool> IsEnabledProperty =
-        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.StyledElementAction, bool>(nameof(IsEnabled), defaultValue: true);
+        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.StyledElementAction, bool>(nameof(IsEnabled),
+            defaultValue: true);
 
     /// <summary>
     /// Gets or sets a value indicating whether this instance is enabled.
@@ -31,6 +32,11 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// <remarks> An example of parameter usage is EventTriggerBehavior, which passes the EventArgs as a parameter to its actions.</remarks>
     /// <returns>Returns the result of the action.</returns>
     public abstract object? Execute(object? sender, object? parameter);
+
+    internal void Initialize()
+    {
+        InitializeIfNeeded();
+    }
 
     internal void AttachActionToLogicalTree(StyledElement parent)
     {

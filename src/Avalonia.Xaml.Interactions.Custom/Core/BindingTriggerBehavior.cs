@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Data;
 using Avalonia.Reactive;
+using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
@@ -121,7 +122,10 @@ public class BindingTriggerBehavior : StyledElementTrigger
             return;
         }
 
-        behavior.Execute(parameter: args);
+        Dispatcher.UIThread.Post(() =>
+        {
+            behavior.Execute(parameter: args);
+        });
     }
 
     private void Execute(object? parameter)

@@ -1,7 +1,5 @@
 ﻿using BehaviorsTestApplication.ViewModels;
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace BehaviorsTestApplication.Views;
 
