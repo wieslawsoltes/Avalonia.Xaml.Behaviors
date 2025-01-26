@@ -1,32 +1,8 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Avalonia.Reactive;
+﻿using System.Diagnostics.CodeAnalysis;
 using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
-
-public class CustomStyledElement : StyledElement
-{
-    public static readonly StyledProperty<object?> ValueProperty =
-        AvaloniaProperty.Register<CustomStyledElement, object?>(nameof(Value));
-
-    public object? Value
-    {
-        get => GetValue(ValueProperty);
-        set => SetValue(ValueProperty, value);
-    }
-
-    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
-    {
-        base.OnPropertyChanged(change);
-
-        if (change.Property == ValueProperty)
-        {
-            Console.WriteLine($"Value={Value}");
-        }
-    }
-}
 
 /// <summary>
 /// A behavior that performs actions when the bound data meets a specified condition.
