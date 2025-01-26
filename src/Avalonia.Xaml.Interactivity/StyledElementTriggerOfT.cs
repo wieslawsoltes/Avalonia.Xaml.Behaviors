@@ -1,6 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
-using Avalonia.Metadata;
 
 namespace Avalonia.Xaml.Interactivity;
 

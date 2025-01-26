@@ -1,6 +1,4 @@
-using Avalonia.Animation;
 using Avalonia.Controls;
-using Avalonia.LogicalTree;
 
 namespace Avalonia.Xaml.Interactivity;
 

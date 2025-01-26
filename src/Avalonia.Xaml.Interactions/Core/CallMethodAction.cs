@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia.Controls;
-using Avalonia.Reactive;
 
 namespace Avalonia.Xaml.Interactions.Core;
 
