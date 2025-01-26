@@ -13,7 +13,8 @@ public abstract class StyledElementAction : StyledElement, IAction
     /// Identifies the <seealso cref="IsEnabled"/> avalonia property.
     /// </summary>
     public static readonly StyledProperty<bool> IsEnabledProperty =
-        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.StyledElementAction, bool>(nameof(IsEnabled), defaultValue: true);
+        AvaloniaProperty.Register<Avalonia.Xaml.Interactivity.StyledElementAction, bool>(nameof(IsEnabled),
+            defaultValue: true);
 
     /// <summary>
     /// Gets or sets a value indicating whether this instance is enabled.
@@ -38,13 +39,13 @@ public abstract class StyledElementAction : StyledElement, IAction
     {
         InitializeIfNeeded();
     }
-    
+
     internal void AttachActionToLogicalTree(StyledElement parent)
     {
         // Required for $parent binding in XAML
         ((ISetLogicalParent)this).SetParent(null);
         ((ISetLogicalParent)this).SetParent(parent);
-        
+
         // Required for TemplateBinding in XAML
         if (parent.TemplatedParent is { } templatedParent)
         {
@@ -55,7 +56,7 @@ public abstract class StyledElementAction : StyledElement, IAction
     internal void DetachActionFromLogicalTree(StyledElement parent)
     {
         ((ISetLogicalParent)this).SetParent(null);
-        
+
         if (parent is { TemplatedParent: not null })
         {
             TemplatedParentHelper.SetTemplatedParent(this, null);
