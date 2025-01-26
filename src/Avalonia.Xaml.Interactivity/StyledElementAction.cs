@@ -7,7 +7,6 @@ namespace Avalonia.Xaml.Interactivity;
 /// <summary>
 /// A base class for action that calls a method on a specified object when invoked.
 /// </summary>
-// REPRO: Change StyledElement to Animatable or AvaloniaObject
 public abstract class StyledElementAction : StyledElement, IAction
 {
     /// <summary>
