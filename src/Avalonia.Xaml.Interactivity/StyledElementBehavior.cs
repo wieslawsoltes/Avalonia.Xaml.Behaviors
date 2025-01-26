@@ -133,7 +133,12 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
 
     void IBehaviorEventsHandler.UnloadedEventHandler() => OnUnloaded();
 
-    void IBehaviorEventsHandler.InitializedEventHandler() => OnInitializedEvent();
+    void IBehaviorEventsHandler.InitializedEventHandler()
+    {
+        Initialize();
+
+        OnInitializedEvent();
+    }
 
     void IBehaviorEventsHandler.DataContextChangedEventHandler() => OnDataContextChangedEvent();
 
@@ -239,6 +244,11 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
     /// </remarks>
     protected virtual void OnActualThemeVariantChangedEvent()
     {
+    }
+
+    internal virtual void Initialize()
+    {
+        InitializeIfNeeded();
     }
 
     internal virtual void AttachBehaviorToLogicalTree()
