@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Reactive;
+using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Core;
@@ -117,7 +118,10 @@ public class DataTriggerBehavior : StyledElementTrigger
     {
         base.OnInitializedEvent();
 
-        Execute(parameter: null);
+        Dispatcher.UIThread.Post(() =>
+        {
+            Execute(parameter: null);
+        });
     }
 
     private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
@@ -127,7 +131,10 @@ public class DataTriggerBehavior : StyledElementTrigger
             return;
         }
 
-        behavior.Execute(parameter: args);
+        Dispatcher.UIThread.Post(() =>
+        {
+            behavior.Execute(parameter: args);
+        });
     }
 
     private void Execute(object? parameter)
