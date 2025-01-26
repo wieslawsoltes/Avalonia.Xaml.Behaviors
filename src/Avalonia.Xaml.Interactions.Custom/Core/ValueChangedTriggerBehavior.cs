@@ -1,4 +1,4 @@
-﻿using Avalonia.Reactive;
+﻿using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
@@ -8,12 +8,6 @@ namespace Avalonia.Xaml.Interactions.Custom;
 /// </summary>
 public class ValueChangedTriggerBehavior : StyledElementTrigger
 {
-    static ValueChangedTriggerBehavior()
-    {
-        BindingProperty.Changed.Subscribe(
-            new AnonymousObserver<AvaloniaPropertyChangedEventArgs<object?>>(OnValueChanged));
-    }
-
     /// <summary>
     /// Identifies the <seealso cref="Binding"/> avalonia property.
     /// </summary>
@@ -29,7 +23,19 @@ public class ValueChangedTriggerBehavior : StyledElementTrigger
         set => SetValue(BindingProperty, value);
     }
 
-    private static void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
+    
+    /// <inheritdoc />
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+                
+        if (change.Property == BindingProperty)
+        {
+            OnValueChanged(change);
+        }
+    }
+
+    private void OnValueChanged(AvaloniaPropertyChangedEventArgs args)
     {
         if (args.Sender is not ValueChangedTriggerBehavior behavior)
         {
