@@ -37,6 +37,9 @@
     <TabItem Header="InvokeCommandAction">
       <pages:InvokeCommandActionView />
     </TabItem>
+    <TabItem Header="FocusControlBehavior">
+      <pages:FocusControlBehaviorView />
+    </TabItem>
     <TabItem Header="RoutedEventTriggerBehavior">
       <pages:RoutedEventTriggerBehaviorView />
     </TabItem>
