@@ -79,6 +79,9 @@
     <TabItem Header="TemplateBinding">
       <pages:TemplateBindingView />
     </TabItem>
+    <TabItem Header="OneTime Binding">
+      <pages:OneTimeBinding />
+    </TabItem>
     <TabItem Header="Pointer Triggers">
       <pages:PointerTriggersView DataContext="{Binding PointerTriggersViewModel}" />
     </TabItem>

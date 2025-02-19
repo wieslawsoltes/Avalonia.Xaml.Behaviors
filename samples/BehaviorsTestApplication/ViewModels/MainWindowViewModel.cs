@@ -21,6 +21,7 @@ public partial class MainWindowViewModel : ViewModelBase
         MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
         MoveRightCommand = ReactiveCommand.Create(() => Position += 5.0);
         ResetMoveCommand = ReactiveCommand.Create(() => Position = 100.0);
+        OpenItemCommand = ReactiveCommand.Create<ItemViewModel>(OpenItem);
         Items =
         [
             new("First Item", "Red")
@@ -30,7 +31,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("First Item Sub Item 1"), new("First Item Sub Item 2"), new("First Item Sub Item 3")
                 ]
             },
-
             new("Second Item", "Green")
             {
                 Items =
@@ -38,7 +38,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("Second Item Sub Item 1"), new("Second Item Sub Item 2"), new("Second Item Sub Item 3")
                 ]
             },
-
             new("Third Item", "Blue")
             {
                 Items =
@@ -46,7 +45,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("Third Item Sub Item 1"), new("Third Item Sub Item 2"), new("Third Item Sub Item 3")
                 ]
             },
-
             new("Fourth Item", "Orange")
             {
                 Items =
@@ -54,7 +52,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("Fourth Item Sub Item 1"), new("Fourth Item Sub Item 2"), new("Fourth Item Sub Item 3")
                 ]
             },
-
             new("Fifth Item", "Purple")
             {
                 Items =
@@ -62,7 +59,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("Fifth Item Sub Item 1"), new("Fifth Item Sub Item 2"), new("Fifth Item Sub Item 3")
                 ]
             },
-
             new("Sixth Item", "Pink")
             {
                 Items =
@@ -70,7 +66,6 @@ public partial class MainWindowViewModel : ViewModelBase
                     new("Sixth Item Sub Item 1"), new("Sixth Item Sub Item 2"), new("Sixth Item Sub Item 3")
                 ]
             }
-
         ];
 
         Values = Observable.Interval(TimeSpan.FromSeconds(1)).Select(_ => _value++);
@@ -104,9 +99,16 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ICommand ResetMoveCommand { get; set; }
 
+    public ICommand OpenItemCommand { get; set; }
+
     private void Initialize()
     {
         Console.WriteLine("InitializeCommand");
+    }
+
+    private void OpenItem(ItemViewModel item)
+    {
+        Console.WriteLine($"OpenItemCommand: {item.Value}");
     }
 
     public void IncrementCount() => Count++;
