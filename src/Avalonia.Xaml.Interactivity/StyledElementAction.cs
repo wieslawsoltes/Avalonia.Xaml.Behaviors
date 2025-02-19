@@ -41,7 +41,6 @@ public abstract class StyledElementAction : StyledElement, IAction
     internal void AttachActionToLogicalTree(StyledElement parent)
     {
         // Required for $parent binding in XAML
-        ((ISetLogicalParent)this).SetParent(null);
         ((ISetLogicalParent)this).SetParent(parent);
 
         // Required for TemplateBinding in XAML

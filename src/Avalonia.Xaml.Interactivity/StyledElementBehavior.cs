@@ -274,7 +274,6 @@ public abstract class StyledElementBehavior : StyledElement, IBehavior, IBehavio
         }
 
         // Required for $parent binding in XAML
-        ((ISetLogicalParent)this).SetParent(null);
         ((ISetLogicalParent)this).SetParent(parent);
 
         // Required for TemplateBinding in XAML
