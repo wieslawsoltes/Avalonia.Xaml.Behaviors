@@ -37,8 +37,8 @@
 
   <ItemGroup>
     <Compile Include="**\*.cs" Exclude="bin\**;obj\**" />
-    <Compile Include="$(InteractivitySourcesBasePath)\**\*.cs" Exclude="$(InteractivitySourcesBasePath)\Properties\**;$(InteractivitySourcesBasePath)\obj\**;$(InteractivitySourcesBasePath)\bin\**" />
-    <Compile Include="$(InteractionsSourcesBasePath)\**\*.cs" Exclude="$(InteractionsSourcesBasePath)\Properties\**;$(InteractionsSourcesBasePath)\obj\**;$(InteractionsSourcesBasePath)\bin\**" />
+    <Compile Include="$(InteractivitySourcesBasePath)\**\*.cs" LinkBase="Interactivity" Exclude="$(InteractivitySourcesBasePath)\Properties\**;$(InteractivitySourcesBasePath)\obj\**;$(InteractivitySourcesBasePath)\bin\**" />
+    <Compile Include="$(InteractionsSourcesBasePath)\**\*.cs" LinkBase="Interactions" Exclude="$(InteractionsSourcesBasePath)\Properties\**;$(InteractionsSourcesBasePath)\obj\**;$(InteractionsSourcesBasePath)\bin\**" />
     <Compile Include="$(InteractionsCustomSourcesBasePath)\**\*.cs" LinkBase="Custom" Exclude="$(InteractionsCustomSourcesBasePath)\Properties\**;$(InteractionsCustomSourcesBasePath)\obj\**;$(InteractionsCustomSourcesBasePath)\bin\**" />
     <Compile Include="$(InteractionsDragAndDropSourcesBasePath)\**\*.cs" LinkBase="DragAndDrop" Exclude="$(InteractionsDragAndDropSourcesBasePath)\Properties\**;$(InteractionsDragAndDropSourcesBasePath)\obj\**;$(InteractionsDragAndDropSourcesBasePath)\bin\**" />
     <Compile Include="$(InteractionsDraggableSourcesBasePath)\**\*.cs" LinkBase="Draggable" Exclude="$(InteractionsDraggableSourcesBasePath)\Properties\**;$(InteractionsDraggableSourcesBasePath)\obj\**;$(InteractionsDraggableSourcesBasePath)\bin\**" />
