@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive.Linq;
 using System.Windows.Input;
+using Avalonia.Platform.Storage;
 using ReactiveUI;
 
 namespace BehaviorsTestApplication.ViewModels;
@@ -16,12 +18,7 @@ public partial class MainWindowViewModel : ViewModelBase
         
         Count = 0;
         Position = 100.0;
-        InitializeCommand = ReactiveCommand.Create(Initialize);
-        MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
-        MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
-        MoveRightCommand = ReactiveCommand.Create(() => Position += 5.0);
-        ResetMoveCommand = ReactiveCommand.Create(() => Position = 100.0);
-        OpenItemCommand = ReactiveCommand.Create<ItemViewModel>(OpenItem);
+
         Items =
         [
             new("First Item", "Red")
@@ -68,9 +65,29 @@ public partial class MainWindowViewModel : ViewModelBase
             }
         ];
 
+        FileItems = new ObservableCollection<Uri>();
+
         Values = Observable.Interval(TimeSpan.FromSeconds(1)).Select(_ => _value++);
 
         MyString = "";
+
+        IsLoading = true;
+        Progress = 30;
+
+        InitializeCommand = ReactiveCommand.Create(Initialize);
+
+        MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
+        MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
+        MoveRightCommand = ReactiveCommand.Create(() => Position += 5.0);
+        ResetMoveCommand = ReactiveCommand.Create(() => Position = 100.0);
+
+        OpenItemCommand = ReactiveCommand.Create<ItemViewModel>(OpenItem);
+
+        OpenFilesCommand = ReactiveCommand.Create<IReadOnlyList<IStorageFile>>(OpenFiles);
+        SaveFileCommand = ReactiveCommand.Create<Uri>(SaveFile);
+        OpenFoldersCommand = ReactiveCommand.Create<IReadOnlyList<IStorageFolder>>(OpenFolders);
+
+        GetClipboardTextCommand = ReactiveCommand.Create<string?>(GetClipboardText);
     }
 
     [Reactive]
@@ -85,9 +102,16 @@ public partial class MainWindowViewModel : ViewModelBase
     [Reactive]
     public partial ObservableCollection<ItemViewModel>? Items { get; set; }
 
+    [Reactive]
+    public partial ObservableCollection<Uri>? FileItems { get; set; }
+
     [Reactive] internal partial string MyString { get; set; }
     
     [Reactive] public partial bool FocusFlag { get; set; }
+    
+    [Reactive] public partial bool IsLoading { get; set; }
+
+    [Reactive] public partial double Progress { get; set; }
 
     public IObservable<int> Values { get; }
 
@@ -101,6 +125,14 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public ICommand OpenItemCommand { get; set; }
 
+    public ICommand OpenFilesCommand { get; set; }
+
+    public ICommand SaveFileCommand { get; set; }
+    
+    public ICommand OpenFoldersCommand { get; set; }
+    
+    public ICommand GetClipboardTextCommand { get; set; }
+
     private void Initialize()
     {
         Console.WriteLine("InitializeCommand");
@@ -109,6 +141,38 @@ public partial class MainWindowViewModel : ViewModelBase
     private void OpenItem(ItemViewModel item)
     {
         Console.WriteLine($"OpenItemCommand: {item.Value}");
+    }
+
+    private void OpenFiles(IReadOnlyList<IStorageFile> files)
+    {
+        foreach (var file in files)
+        {
+            Console.WriteLine($"OpenFilesCommand: {file.Name}, {file.Path}");
+
+            FileItems.Add(file.Path);
+        }
+    }
+
+    private void SaveFile(Uri file)
+    {
+        Console.WriteLine($"SaveFileCommand: {file}");
+
+        FileItems.Add(file);
+    }
+
+    private void OpenFolders(IReadOnlyList<IStorageFolder> folders)
+    {
+        foreach (var folder in folders)
+        {
+            Console.WriteLine($"OpenFoldersCommand: {folder.Name}, {folder.Path}");
+
+            FileItems.Add(folder.Path);
+        }
+    }
+
+    private void GetClipboardText(string? text)
+    {
+        Console.WriteLine($"GetClipboardTextCommand: {text}");
     }
 
     public void IncrementCount() => Count++;
