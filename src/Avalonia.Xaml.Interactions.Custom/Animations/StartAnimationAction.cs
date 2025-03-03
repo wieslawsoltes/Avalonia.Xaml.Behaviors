@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Xaml.Interactivity;
 
-namespace Avalonia.Xaml.Interactions;
+namespace Avalonia.Xaml.Interactions.Custom;
 
 /// <summary>
 /// 
