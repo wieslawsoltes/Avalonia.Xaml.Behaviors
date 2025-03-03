@@ -5,7 +5,7 @@ namespace Avalonia.Xaml.Interactions.Custom;
 /// <summary>
 /// 
 /// </summary>
-public abstract class ActualThemeVariantChangedTrigger : StyledElementTrigger<StyledElement>
+public class ActualThemeVariantChangedTrigger : StyledElementTrigger<StyledElement>
 {
     /// <inheritdoc />
     protected override void OnActualThemeVariantChangedEvent()
