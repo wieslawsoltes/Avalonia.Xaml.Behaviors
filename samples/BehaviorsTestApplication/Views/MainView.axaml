@@ -94,5 +94,8 @@
     <TabItem Header="Drag and Drop">
       <pages:DragAndDropView />
     </TabItem>
+    <TabItem Header="Draggable">
+      <pages:DraggableView />
+    </TabItem>
   </TabControl>
 </UserControl>

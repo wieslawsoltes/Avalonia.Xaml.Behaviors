@@ -1,4 +1,4 @@
-namespace DraggableDemo.Models;
+namespace BehaviorsTestApplication.Models;
 
 public class DragItem
 {

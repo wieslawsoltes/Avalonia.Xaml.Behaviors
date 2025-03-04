@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using DraggableDemo.Models;
+using BehaviorsTestApplication.Models;
 
-namespace DraggableDemo;
+namespace BehaviorsTestApplication.Views.Pages;
 
 public partial class DraggableView : UserControl
 {
