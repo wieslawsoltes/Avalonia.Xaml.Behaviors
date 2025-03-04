@@ -21,31 +21,6 @@
 
   <TabControl Classes="draggable">
 
-    <TabItem Header="TabControl">
-      <TabControl Classes="draggable custom" Background="LightGray">
-        <TabControl.Styles>
-          <Style Selector="TabItem:not(:dragging)">
-            <Setter Property="Transitions">
-              <Setter.Value>
-                  <Transitions>
-                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
-                  </Transitions>
-              </Setter.Value>
-            </Setter>
-          </Style>
-        </TabControl.Styles>
-        <TabItem Header="Tab1">
-          <TextBlock Text="Tab1" />
-        </TabItem>
-        <TabItem Header="Tab2">
-          <TextBlock Text="Tab2" />
-        </TabItem>
-        <TabItem Header="Tab3">
-          <TextBlock Text="Tab3" />
-        </TabItem>
-      </TabControl>
-    </TabItem>
-
     <TabItem Header="TabControl (Items)">
       <TabControl Classes="draggableVirtualizing custom" ItemsSource="{Binding Items}" Background="LightGray" >
         <TabControl.Styles>
@@ -60,34 +35,6 @@
           </Style>
         </TabControl.Styles>
       </TabControl>
-    </TabItem>
-
-    <TabItem Header="ListBox">
-      <ListBox Classes="draggable">
-        <ListBox.Styles>
-          <Style Selector="ListBoxItem > TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Left" />
-          </Style>
-          <Style Selector="ListBoxItem:not(:dragging)">
-            <Setter Property="Transitions">
-              <Setter.Value>
-                <Transitions>
-                  <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
-                </Transitions>
-              </Setter.Value>
-            </Setter>
-          </Style>
-        </ListBox.Styles>
-        <ListBoxItem>
-          <TextBlock Text="Item1" />
-        </ListBoxItem>
-        <ListBoxItem>
-          <TextBlock Text="Item2" />
-        </ListBoxItem>
-        <ListBoxItem>
-          <TextBlock Text="Item3" />
-        </ListBoxItem>
-      </ListBox>
     </TabItem>
 
     <TabItem Header="ListBox (Items)">
@@ -107,20 +54,6 @@
           </Style>
         </ListBox.Styles>
       </ListBox>
-    </TabItem>
-
-    <TabItem Header="Canvas">
-      <Canvas Classes="draggable" Width="500" Height="300" Background="LightGray">
-        <Canvas.Styles>
-          <Style Selector="Canvas > :is(Control):dragging">
-            <Setter Property="ZIndex" Value="1" />
-          </Style>
-        </Canvas.Styles>
-        <Rectangle Fill="Blue" Width="60" Height="40" Canvas.Left="20" Canvas.Top="10" />
-        <Ellipse Fill="Red" Width="50" Height="50" Canvas.Left="120" Canvas.Top="30" />
-        <TextBlock Text="Hello from Avalonia" Background="Transparent" Canvas.Left="40" Canvas.Top="100" />
-        <Panel Background="Purple" Width="80" Height="70" Canvas.Left="250" Canvas.Top="100" />
-      </Canvas>
     </TabItem>
 
     <TabItem Header="Canvas (Items)">
@@ -146,22 +79,6 @@
           </DataTemplate>
         </ItemsControl.DataTemplates>
       </ItemsControl>
-    </TabItem>
-
-    <TabItem Header="Grid">
-      <Grid Classes="draggable" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" ShowGridLines="True" Width="500" Height="300" Background="LightGray">
-        <Grid.Styles>
-          <Style Selector="Grid > :is(Control):dragging">
-            <Setter Property="Opacity" Value="0.5" />
-            <Setter Property="ZIndex" Value="1" />
-          </Style>
-        </Grid.Styles>
-        <Rectangle Fill="Blue" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" />
-        <Ellipse Fill="Red" Grid.Column="2" Grid.Row="0" />
-        <TextBlock Text="Hello from Avalonia" Background="Transparent" Grid.Column="0" Grid.Row="1" />
-        <Panel Background="Purple" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
-        <Ellipse Fill="Cyan" Grid.Column="2" Grid.Row="2" />
-      </Grid>
     </TabItem>
 
     <TabItem Header="Grid (Items)">
@@ -200,6 +117,89 @@
           </DataTemplate>
         </ItemsControl.DataTemplates>
       </ItemsControl>
+    </TabItem>
+
+    <TabItem Header="TabControl">
+      <TabControl Classes="draggable custom" Background="LightGray">
+        <TabControl.Styles>
+          <Style Selector="TabItem:not(:dragging)">
+            <Setter Property="Transitions">
+              <Setter.Value>
+                  <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                  </Transitions>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </TabControl.Styles>
+        <TabItem Header="Tab1">
+          <TextBlock Text="Tab1" />
+        </TabItem>
+        <TabItem Header="Tab2">
+          <TextBlock Text="Tab2" />
+        </TabItem>
+        <TabItem Header="Tab3">
+          <TextBlock Text="Tab3" />
+        </TabItem>
+      </TabControl>
+    </TabItem>
+
+    <TabItem Header="ListBox">
+      <ListBox Classes="draggable">
+        <ListBox.Styles>
+          <Style Selector="ListBoxItem > TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+          </Style>
+          <Style Selector="ListBoxItem:not(:dragging)">
+            <Setter Property="Transitions">
+              <Setter.Value>
+                <Transitions>
+                  <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1" />
+                </Transitions>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ListBox.Styles>
+        <ListBoxItem>
+          <TextBlock Text="Item1" />
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock Text="Item2" />
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock Text="Item3" />
+        </ListBoxItem>
+      </ListBox>
+    </TabItem>
+
+    <TabItem Header="Canvas">
+      <Canvas Classes="draggable" Width="500" Height="300" Background="LightGray">
+        <Canvas.Styles>
+          <Style Selector="Canvas > :is(Control):dragging">
+            <Setter Property="ZIndex" Value="1" />
+          </Style>
+        </Canvas.Styles>
+        <Rectangle Fill="Blue" Width="60" Height="40" Canvas.Left="20" Canvas.Top="10" />
+        <Ellipse Fill="Red" Width="50" Height="50" Canvas.Left="120" Canvas.Top="30" />
+        <TextBlock Text="Hello from Avalonia" Background="Transparent" Canvas.Left="40" Canvas.Top="100" />
+        <Panel Background="Purple" Width="80" Height="70" Canvas.Left="250" Canvas.Top="100" />
+      </Canvas>
+    </TabItem>
+
+    <TabItem Header="Grid">
+      <Grid Classes="draggable" ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" ShowGridLines="True" Width="500" Height="300" Background="LightGray">
+        <Grid.Styles>
+          <Style Selector="Grid > :is(Control):dragging">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="ZIndex" Value="1" />
+          </Style>
+        </Grid.Styles>
+        <Rectangle Fill="Blue" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" />
+        <Ellipse Fill="Red" Grid.Column="2" Grid.Row="0" />
+        <TextBlock Text="Hello from Avalonia" Background="Transparent" Grid.Column="0" Grid.Row="1" />
+        <Panel Background="Purple" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
+        <Ellipse Fill="Cyan" Grid.Column="2" Grid.Row="2" />
+      </Grid>
     </TabItem>
 
   </TabControl>
