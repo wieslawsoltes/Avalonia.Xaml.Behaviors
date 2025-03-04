@@ -3,12 +3,12 @@ using ReactiveUI;
 
 namespace DragAndDropSample.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public class DragAndDropSampleViewModel : ViewModelBase
 {
-    private ObservableCollection<ItemViewModel> _items;
+    private ObservableCollection<DragItemViewModel> _items;
     private ObservableCollection<NodeViewModel> _nodes;
         
-    public ObservableCollection<ItemViewModel> Items
+    public ObservableCollection<DragItemViewModel> Items
     {
         get => _items;
         set => this.RaiseAndSetIfChanged(ref _items, value);
@@ -20,7 +20,7 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _nodes, value);
     }
 
-    public MainWindowViewModel()
+    public DragAndDropSampleViewModel()
     {
         _items =
         [

@@ -11,7 +11,7 @@ public class NodesListBoxDropHandler : DropHandlerBase
     private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : NodeViewModel
     {
         if (sourceContext is not T sourceNode
-            || targetContext is not MainWindowViewModel vm
+            || targetContext is not DragAndDropSampleViewModel vm
             || listBox.GetVisualAt(e.GetPosition(listBox)) is not Control targetControl
             || targetControl.DataContext is not T targetNode)
         {

@@ -11,7 +11,7 @@ public class NodesTreeViewDropHandler : DropHandlerBase
     private bool Validate<T>(TreeView treeView, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : NodeViewModel
     {
         if (sourceContext is not T sourceNode
-            || targetContext is not MainWindowViewModel vm
+            || targetContext is not DragAndDropSampleViewModel vm
             || treeView.GetVisualAt(e.GetPosition(treeView)) is not Control targetControl
             || targetControl.DataContext is not T targetNode)
         {

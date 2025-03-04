@@ -8,10 +8,10 @@ namespace DragAndDropSample.Behaviors;
 
 public class ItemsListBoxDropHandler : DropHandlerBase
 {
-    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : ItemViewModel
+    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : DragItemViewModel
     {
         if (sourceContext is not T sourceItem
-            || targetContext is not MainWindowViewModel vm
+            || targetContext is not DragAndDropSampleViewModel vm
             || listBox.GetVisualAt(e.GetPosition(listBox)) is not Control targetControl
             || targetControl.DataContext is not T targetItem)
         {
@@ -33,7 +33,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
             {
                 if (bExecute)
                 {
-                    var clone = new ItemViewModel() { Title = sourceItem.Title + "_copy" };
+                    var clone = new DragItemViewModel() { Title = sourceItem.Title + "_copy" };
                     InsertItem(items, clone, targetIndex + 1);
                 }
                 return true;
@@ -63,7 +63,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<ItemViewModel>(listBox, e, sourceContext, targetContext, false);
+            return Validate<DragItemViewModel>(listBox, e, sourceContext, targetContext, false);
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<ItemViewModel>(listBox, e, sourceContext, targetContext, true);
+            return Validate<DragItemViewModel>(listBox, e, sourceContext, targetContext, true);
         }
         return false;
     }

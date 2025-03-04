@@ -1,6 +1,6 @@
 namespace DraggableDemo.Models;
 
-public class Item
+public class DragItem
 {
     public string? Title { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace DragAndDropSample.ViewModels;
 
-public class ItemViewModel : ViewModelBase
+public class DragItemViewModel : ViewModelBase
 {
     private string? _title;
 
