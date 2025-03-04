@@ -2,25 +2,25 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.VisualTree;
 using Avalonia.Xaml.Interactions.DragAndDrop;
-using DragAndDropSample.ViewModels;
+using BehaviorsTestApplication.ViewModels;
 
-namespace DragAndDropSample.Behaviors;
+namespace BehaviorsTestApplication.Behaviors;
 
-public class ItemsListBoxDropHandler : DropHandlerBase
+public class NodesListBoxDropHandler : DropHandlerBase
 {
-    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : DragItemViewModel
+    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : DragNodeViewModel
     {
-        if (sourceContext is not T sourceItem
+        if (sourceContext is not T sourceNode
             || targetContext is not DragAndDropSampleViewModel vm
             || listBox.GetVisualAt(e.GetPosition(listBox)) is not Control targetControl
-            || targetControl.DataContext is not T targetItem)
+            || targetControl.DataContext is not T targetNode)
         {
             return false;
         }
 
-        var items = vm.Items;
-        var sourceIndex = items.IndexOf(sourceItem);
-        var targetIndex = items.IndexOf(targetItem);
+        var nodes = vm.Nodes;
+        var sourceIndex = nodes.IndexOf(sourceNode);
+        var targetIndex = nodes.IndexOf(targetNode);
 
         if (sourceIndex < 0 || targetIndex < 0)
         {
@@ -33,8 +33,8 @@ public class ItemsListBoxDropHandler : DropHandlerBase
             {
                 if (bExecute)
                 {
-                    var clone = new DragItemViewModel() { Title = sourceItem.Title + "_copy" };
-                    InsertItem(items, clone, targetIndex + 1);
+                    var clone = new DragNodeViewModel() { Title = sourceNode.Title + "_copy" };
+                    InsertItem(nodes, clone, targetIndex + 1);
                 }
                 return true;
             }
@@ -42,7 +42,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
             {
                 if (bExecute)
                 {
-                    MoveItem(items, sourceIndex, targetIndex);
+                    MoveItem(nodes, sourceIndex, targetIndex);
                 }
                 return true;
             }
@@ -50,7 +50,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
             {
                 if (bExecute)
                 {
-                    SwapItem(items, sourceIndex, targetIndex);
+                    SwapItem(nodes, sourceIndex, targetIndex);
                 }
                 return true;
             }
@@ -63,7 +63,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<DragItemViewModel>(listBox, e, sourceContext, targetContext, false);
+            return Validate<DragNodeViewModel>(listBox, e, sourceContext, targetContext, false);
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class ItemsListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<DragItemViewModel>(listBox, e, sourceContext, targetContext, true);
+            return Validate<DragNodeViewModel>(listBox, e, sourceContext, targetContext, true);
         }
         return false;
     }

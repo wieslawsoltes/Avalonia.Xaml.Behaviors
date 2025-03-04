@@ -6,9 +6,9 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using Avalonia.Xaml.Interactions.DragAndDrop;
-using DragAndDropSample.ViewModels;
+using BehaviorsTestApplication.ViewModels;
 
-namespace DragAndDropSample.Behaviors;
+namespace BehaviorsTestApplication.Behaviors;
 
 public abstract class BaseDataGridDropHandler<T> : DropHandlerBase
     where T : ViewModelBase

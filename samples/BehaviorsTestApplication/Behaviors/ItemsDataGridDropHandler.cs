@@ -2,9 +2,9 @@ using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.VisualTree;
-using DragAndDropSample.ViewModels;
+using BehaviorsTestApplication.ViewModels;
 
-namespace DragAndDropSample.Behaviors;
+namespace BehaviorsTestApplication.Behaviors;
 
 public sealed class ItemsDataGridDropHandler : BaseDataGridDropHandler<DragItemViewModel>
 {

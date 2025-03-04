@@ -2,9 +2,9 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.VisualTree;
 using Avalonia.Xaml.Interactions.DragAndDrop;
-using DragAndDropSample.ViewModels;
+using BehaviorsTestApplication.ViewModels;
 
-namespace DragAndDropSample.Behaviors;
+namespace BehaviorsTestApplication.Behaviors;
 
 public class NodesTreeViewDropHandler : DropHandlerBase
 {

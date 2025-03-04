@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace DragAndDropSample.ViewModels;
+namespace BehaviorsTestApplication.ViewModels;
 
 public class DragItemViewModel : ViewModelBase
 {

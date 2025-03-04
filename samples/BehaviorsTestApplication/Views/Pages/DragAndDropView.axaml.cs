@@ -1,8 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using DragAndDropSample.ViewModels;
+using BehaviorsTestApplication.ViewModels;
 
-namespace DragAndDropSample.Views;
+namespace BehaviorsTestApplication.Views.Pages;
 
 public partial class DragAndDropView : UserControl
 {

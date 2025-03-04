@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using ReactiveUI;
 
-namespace DragAndDropSample.ViewModels;
+namespace BehaviorsTestApplication.ViewModels;
 
 public class DragNodeViewModel : ViewModelBase
 {

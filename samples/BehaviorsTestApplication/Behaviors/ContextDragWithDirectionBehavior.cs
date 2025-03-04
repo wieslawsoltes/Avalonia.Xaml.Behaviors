@@ -7,7 +7,7 @@ using Avalonia.Interactivity;
 using Avalonia.Xaml.Interactions.DragAndDrop;
 using Avalonia.Xaml.Interactivity;
 
-namespace DragAndDropSample.Behaviors;
+namespace BehaviorsTestApplication.Behaviors;
 
 /// <summary>
 /// 
