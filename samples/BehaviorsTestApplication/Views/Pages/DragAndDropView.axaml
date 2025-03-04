@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:BehaviorsTestApplication.ViewModels"
-             xmlns:b="using:BehaviorsTestApplication.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BehaviorsTestApplication.Views.Pages.DragAndDropView"
              x:DataType="vm:DragAndDropSampleViewModel"
@@ -23,7 +22,7 @@
 
     <Style Selector="ListBox.ItemsDragAndDrop">
       <Style.Resources>
-        <b:ItemsListBoxDropHandler x:Key="ItemsListBoxDropHandler" />
+        <ItemsListBoxDropHandler x:Key="ItemsListBoxDropHandler" />
       </Style.Resources>
       <Setter Property="(Interaction.Behaviors)">
         <BehaviorCollectionTemplate>
@@ -47,7 +46,7 @@
 
     <Style Selector="ListBox.NodesDragAndDrop">
       <Style.Resources>
-        <b:NodesListBoxDropHandler x:Key="NodesListBoxDropHandler" />
+        <NodesListBoxDropHandler x:Key="NodesListBoxDropHandler" />
       </Style.Resources>
       <Setter Property="(Interaction.Behaviors)">
         <BehaviorCollectionTemplate>
@@ -71,7 +70,7 @@
 
     <Style Selector="TreeView.NodesDragAndDrop">
       <Style.Resources>
-        <b:NodesTreeViewDropHandler x:Key="NodesTreeViewDropHandler" />
+        <NodesTreeViewDropHandler x:Key="NodesTreeViewDropHandler" />
       </Style.Resources>
       <Setter Property="(Interaction.Behaviors)">
         <BehaviorCollectionTemplate>
@@ -95,7 +94,7 @@
 
     <Style Selector="DataGrid.DragAndDrop">
       <Style.Resources>
-        <b:ItemsDataGridDropHandler x:Key="ItemsDataGridDropHandler" />
+        <ItemsDataGridDropHandler x:Key="ItemsDataGridDropHandler" />
       </Style.Resources>
       <Setter
         Property="RowHeaderWidth"
@@ -131,7 +130,7 @@
       <Setter Property="(Interaction.Behaviors)">
         <BehaviorCollectionTemplate>
           <BehaviorCollection>
-            <b:ContextDragWithDirectionBehavior HorizontalDragThreshold="3" VerticalDragThreshold="3" />
+            <ContextDragWithDirectionBehavior HorizontalDragThreshold="3" VerticalDragThreshold="3" />
           </BehaviorCollection>
         </BehaviorCollectionTemplate>
       </Setter>
@@ -154,7 +153,7 @@
 
     <Style Selector="DataGrid.ItemsDragAndDrop">
       <Style.Resources>
-        <b:ItemsDataGridDropHandler x:Key="ItemsDataGridDropHandler" />
+        <ItemsDataGridDropHandler x:Key="ItemsDataGridDropHandler" />
       </Style.Resources>
       <Setter Property="(Interaction.Behaviors)">
         <BehaviorCollectionTemplate>
