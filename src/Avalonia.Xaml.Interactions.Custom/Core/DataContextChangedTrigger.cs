@@ -1,3 +1,4 @@
+using Avalonia.Threading;
 using Avalonia.Xaml.Interactivity;
 
 namespace Avalonia.Xaml.Interactions.Custom;
@@ -10,7 +11,10 @@ public class DataContextChangedTrigger : StyledElementTrigger<StyledElement>
     /// <inheritdoc />
     protected override void OnDataContextChangedEvent()
     {
-        Execute(parameter: null);
+        Dispatcher.UIThread.Post(() =>
+        {
+            Execute(parameter: null);
+        });
     }
 
     private void Execute(object? parameter)
