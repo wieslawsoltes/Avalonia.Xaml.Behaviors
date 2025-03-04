@@ -74,6 +74,8 @@ public partial class MainWindowViewModel : ViewModelBase
         IsLoading = true;
         Progress = 30;
 
+        DataContextChangedCommand = ReactiveCommand.Create(DataContextChanged);
+
         InitializeCommand = ReactiveCommand.Create(Initialize);
 
         MoveLeftCommand = ReactiveCommand.Create(() => Position -= 5.0);
@@ -115,6 +117,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public IObservable<int> Values { get; }
 
+    public ICommand DataContextChangedCommand { get; set; }
+
     public ICommand InitializeCommand { get; set; }
 
     public ICommand MoveLeftCommand { get; set; }
@@ -132,6 +136,11 @@ public partial class MainWindowViewModel : ViewModelBase
     public ICommand OpenFoldersCommand { get; set; }
     
     public ICommand GetClipboardTextCommand { get; set; }
+
+    private void DataContextChanged()
+    {
+        Console.WriteLine("DataContextChanged");
+    }
 
     private void Initialize()
     {
