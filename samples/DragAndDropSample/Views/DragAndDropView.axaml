@@ -175,7 +175,7 @@
                   Classes="NodesDragAndDrop"
                   Grid.Column="0">
           <TreeView.ItemTemplate>
-            <TreeDataTemplate DataType="vm:NodeViewModel" ItemsSource="{Binding Nodes}">
+            <TreeDataTemplate DataType="vm:DragNodeViewModel" ItemsSource="{Binding Nodes}">
               <TextBlock Text="{Binding Title}" />
             </TreeDataTemplate>
           </TreeView.ItemTemplate>
@@ -185,7 +185,7 @@
                  Classes="NodesDragAndDrop"
                  Grid.Column="2">
           <ListBox.ItemTemplate>
-            <DataTemplate DataType="vm:NodeViewModel">
+            <DataTemplate DataType="vm:DragNodeViewModel">
               <TextBlock Text="{Binding Title}" />
             </DataTemplate>
           </ListBox.ItemTemplate>

@@ -6,7 +6,7 @@ namespace DragAndDropSample.ViewModels;
 public class DragAndDropSampleViewModel : ViewModelBase
 {
     private ObservableCollection<DragItemViewModel> _items;
-    private ObservableCollection<NodeViewModel> _nodes;
+    private ObservableCollection<DragNodeViewModel> _nodes;
         
     public ObservableCollection<DragItemViewModel> Items
     {
@@ -14,7 +14,7 @@ public class DragAndDropSampleViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _items, value);
     }
 
-    public ObservableCollection<NodeViewModel> Nodes
+    public ObservableCollection<DragNodeViewModel> Nodes
     {
         get => _nodes;
         set => this.RaiseAndSetIfChanged(ref _nodes, value);
@@ -31,7 +31,7 @@ public class DragAndDropSampleViewModel : ViewModelBase
             new() { Title = "Item4" }
         ];
 
-        var node0 = new NodeViewModel()
+        var node0 = new DragNodeViewModel()
         {
             Title = "Node0"
         };
@@ -42,7 +42,7 @@ public class DragAndDropSampleViewModel : ViewModelBase
             new() { Title = "Node0-2", Parent = node0 }
         ]; 
 
-        var node1 = new NodeViewModel()
+        var node1 = new DragNodeViewModel()
         {
             Title = "Node1"
         };
@@ -53,7 +53,7 @@ public class DragAndDropSampleViewModel : ViewModelBase
             new() { Title = "Node1-2", Parent = node1 }
         ]; 
 
-        var node2 = new NodeViewModel()
+        var node2 = new DragNodeViewModel()
         {
             Title = "Node2"
         };

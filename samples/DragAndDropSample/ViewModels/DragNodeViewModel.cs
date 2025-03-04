@@ -3,11 +3,11 @@ using ReactiveUI;
 
 namespace DragAndDropSample.ViewModels;
 
-public class NodeViewModel : ViewModelBase
+public class DragNodeViewModel : ViewModelBase
 {
     private string? _title;
-    private NodeViewModel? _parent;
-    private ObservableCollection<NodeViewModel>? _nodes;
+    private DragNodeViewModel? _parent;
+    private ObservableCollection<DragNodeViewModel>? _nodes;
 
     public string? Title
     {
@@ -15,13 +15,13 @@ public class NodeViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _title, value);
     }
 
-    public NodeViewModel? Parent
+    public DragNodeViewModel? Parent
     {
         get => _parent;
         set => this.RaiseAndSetIfChanged(ref _parent, value);
     }
 
-    public ObservableCollection<NodeViewModel>? Nodes
+    public ObservableCollection<DragNodeViewModel>? Nodes
     {
         get => _nodes;
         set => this.RaiseAndSetIfChanged(ref _nodes, value);

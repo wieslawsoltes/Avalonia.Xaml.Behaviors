@@ -8,7 +8,7 @@ namespace DragAndDropSample.Behaviors;
 
 public class NodesListBoxDropHandler : DropHandlerBase
 {
-    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : NodeViewModel
+    private bool Validate<T>(ListBox listBox, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : DragNodeViewModel
     {
         if (sourceContext is not T sourceNode
             || targetContext is not DragAndDropSampleViewModel vm
@@ -33,7 +33,7 @@ public class NodesListBoxDropHandler : DropHandlerBase
             {
                 if (bExecute)
                 {
-                    var clone = new NodeViewModel() { Title = sourceNode.Title + "_copy" };
+                    var clone = new DragNodeViewModel() { Title = sourceNode.Title + "_copy" };
                     InsertItem(nodes, clone, targetIndex + 1);
                 }
                 return true;
@@ -63,7 +63,7 @@ public class NodesListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<NodeViewModel>(listBox, e, sourceContext, targetContext, false);
+            return Validate<DragNodeViewModel>(listBox, e, sourceContext, targetContext, false);
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class NodesListBoxDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is ListBox listBox)
         {
-            return Validate<NodeViewModel>(listBox, e, sourceContext, targetContext, true);
+            return Validate<DragNodeViewModel>(listBox, e, sourceContext, targetContext, true);
         }
         return false;
     }

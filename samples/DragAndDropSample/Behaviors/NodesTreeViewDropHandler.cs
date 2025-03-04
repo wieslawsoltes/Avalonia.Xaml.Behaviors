@@ -8,7 +8,7 @@ namespace DragAndDropSample.Behaviors;
 
 public class NodesTreeViewDropHandler : DropHandlerBase
 {
-    private bool Validate<T>(TreeView treeView, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : NodeViewModel
+    private bool Validate<T>(TreeView treeView, DragEventArgs e, object? sourceContext, object? targetContext, bool bExecute) where T : DragNodeViewModel
     {
         if (sourceContext is not T sourceNode
             || targetContext is not DragAndDropSampleViewModel vm
@@ -39,7 +39,7 @@ public class NodesTreeViewDropHandler : DropHandlerBase
                 {
                     if (bExecute)
                     {
-                        var clone = new NodeViewModel() { Title = sourceNode.Title + "_copy" };
+                        var clone = new DragNodeViewModel() { Title = sourceNode.Title + "_copy" };
                         InsertItem(targetNodes, clone, targetIndex + 1);
                     }
 
@@ -92,7 +92,7 @@ public class NodesTreeViewDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is TreeView treeView)
         {
-            return Validate<NodeViewModel>(treeView, e, sourceContext, targetContext, false);
+            return Validate<DragNodeViewModel>(treeView, e, sourceContext, targetContext, false);
         }
         return false;
     }
@@ -101,7 +101,7 @@ public class NodesTreeViewDropHandler : DropHandlerBase
     {
         if (e.Source is Control && sender is TreeView treeView)
         {
-            return Validate<NodeViewModel>(treeView, e, sourceContext, targetContext, true);
+            return Validate<DragNodeViewModel>(treeView, e, sourceContext, targetContext, true);
         }
         return false;
     }
