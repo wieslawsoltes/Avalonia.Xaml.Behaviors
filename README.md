@@ -1,15 +1,14 @@
-# Avalonia XAML Behaviors
+# XAML Behaviors
 
-[![Gitter](https://badges.gitter.im/wieslawsoltes/AvaloniaBehaviors.svg)](https://gitter.im/wieslawsoltes/AvaloniaBehaviors?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 [![Build Status](https://dev.azure.com/wieslawsoltes/GitHub/_apis/build/status/wieslawsoltes.AvaloniaBehaviors?repoName=wieslawsoltes%2FAvaloniaBehaviors&branchName=master)](https://dev.azure.com/wieslawsoltes/GitHub/_build/latest?definitionId=90&repoName=wieslawsoltes%2FAvaloniaBehaviors&branchName=master)
-[![CI](https://github.com/wieslawsoltes/Avalonia.Xaml.Behaviors/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/wieslawsoltes/Avalonia.Xaml.Behaviors/actions/workflows/build.yml)
+[![CI](https://github.com/wieslawsoltes/Xaml.Behaviors/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/wieslawsoltes/Xaml.Behaviors/actions/workflows/build.yml)
 
 [![NuGet](https://img.shields.io/nuget/v/Avalonia.Xaml.Behaviors.svg)](https://www.nuget.org/packages/Avalonia.Xaml.Behaviors)
 [![NuGet](https://img.shields.io/nuget/dt/Avalonia.Xaml.Interactivity.svg)](https://www.nuget.org/packages/Avalonia.Xaml.Interactivity)
 [![MyGet](https://img.shields.io/myget/xamlbehaviors-nightly/vpre/Avalonia.Xaml.Behaviors.svg?label=myget)](https://www.myget.org/gallery/xamlbehaviors-nightly) 
 
-**AvaloniaBehaviors** is a port of [Windows UWP](https://github.com/Microsoft/XamlBehaviors) version of XAML Behaviors for [Avalonia](https://github.com/AvaloniaUI/Avalonia) XAML.
+**Xaml Behaviors** is a port of [Windows UWP](https://github.com/Microsoft/XamlBehaviors) version of XAML Behaviors for [Avalonia](https://github.com/AvaloniaUI/Avalonia) XAML.
 
 Avalonia XAML Behaviors is an easy-to-use means of adding common and reusable interactivity to your [Avalonia](https://github.com/AvaloniaUI/Avalonia) applications with minimal code. Avalonia port is available only for managed applications. Use of XAML Behaviors is governed by the MIT License. 
 
@@ -19,7 +18,7 @@ Avalonia XAML Behaviors is an easy-to-use means of adding common and reusable in
 
 First, clone the repository or download the latest zip.
 ```
-git clone https://github.com/wieslawsoltes/AvaloniaBehaviors.git
+git clone https://github.com/wieslawsoltes/Xaml.Behaviors.git
 ```
 
 ### Build on Windows using script
@@ -53,9 +52,9 @@ Open up a terminal prompt and execute the commands:
 
 Avalonia XamlBehaviors is delivered as a NuGet package.
 
-You can find the packages here [NuGet](https://www.nuget.org/packages/Avalonia.Xaml.Behaviors/) and install the package like this:
+You can find the packages here [NuGet](https://www.nuget.org/packages/Xaml.Behaviors/) and install the package like this:
 
-`Install-Package Avalonia.Xaml.Behaviors`
+`Install-Package Xaml.Behaviors`
 
 or by using nightly build feed:
 * Add `https://www.myget.org/F/xamlbehaviors-nightly/api/v2` to your package sources
@@ -64,7 +63,7 @@ or by using nightly build feed:
 
 and install the package like this:
 
-`Install-Package Avalonia.Xaml.Behaviors -Pre`
+`Install-Package Xaml.Behaviors -Pre`
 
 ### Package Sources
 
@@ -73,7 +72,7 @@ and install the package like this:
 
 ## Resources
 
-* [GitHub source code repository.](https://github.com/wieslawsoltes/AvaloniaBehaviors)
+* [GitHub source code repository.](https://github.com/wieslawsoltes/Xaml.Behaviors)
 
 ## License
 
